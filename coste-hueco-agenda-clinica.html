@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="es-ES">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cuánto cuesta un hueco vacío en la agenda de tu clínica (calculadora) · Sinhueco</title>
+<meta name="description" content="Calcula cuánto dinero pierde tu clínica al mes por cancelaciones que no se rellenan. Fórmula sencilla, calculadora y precios de referencia con fuentes.">
+<!-- URLs canónicas: si se compra sinhueco.com, sustituir https://sinhueco.vercel.app por https://sinhueco.com
+     en todos los .html, sitemap.xml, robots.txt, llms.txt y llms-full.txt (buscar y reemplazar) y redirigir el dominio viejo con un 301. -->
+<link rel="canonical" href="https://sinhueco.vercel.app/coste-hueco-agenda-clinica.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Sinhueco">
+<meta property="og:locale" content="es_ES">
+<meta property="og:url" content="https://sinhueco.vercel.app/coste-hueco-agenda-clinica.html">
+<meta property="og:title" content="Cuánto cuesta un hueco vacío en la agenda de tu clínica">
+<meta property="og:description" content="Calculadora gratuita: pon tus cancelaciones y tu precio medio de cita y mira cuánto se te escapa al mes.">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#F2F5F4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0C1614" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='3' y='3' width='26' height='26' rx='7.5' fill='%23F2F5F4' stroke='%2311211D' stroke-width='3'/%3E%3Crect x='8' y='11' width='16' height='5.5' rx='2' fill='%23FF6A2B'/%3E%3C/svg%3E">
+<script>try{var t=localStorage.getItem("sinhueco-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;600&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="assets/guia.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://sinhueco.vercel.app/coste-hueco-agenda-clinica.html#article",
+      "headline": "Cuánto cuesta un hueco vacío en la agenda de tu clínica",
+      "description": "Fórmula y calculadora para estimar cuánto dinero pierde una clínica al mes por cancelaciones que no se rellenan.",
+      "inLanguage": "es-ES",
+      "datePublished": "2026-09-22",
+      "dateModified": "2026-09-22",
+      "mainEntityOfPage": "https://sinhueco.vercel.app/coste-hueco-agenda-clinica.html",
+      "author": { "@id": "https://sinhueco.vercel.app/#org" },
+      "publisher": { "@id": "https://sinhueco.vercel.app/#org" },
+      "about": ["Cancelaciones de citas", "Coste de oportunidad", "Gestión de clínicas", "Calculadora"]
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Calculadora del coste de los huecos de agenda",
+      "url": "https://sinhueco.vercel.app/coste-hueco-agenda-clinica.html#calculadora",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "inLanguage": "es-ES",
+      "isAccessibleForFree": true,
+      "publisher": { "@id": "https://sinhueco.vercel.app/#org" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://sinhueco.vercel.app/#org",
+      "name": "Sinhueco",
+      "url": "https://sinhueco.vercel.app/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://sinhueco.vercel.app/" },
+        { "@type": "ListItem", "position": 2, "name": "Guías", "item": "https://sinhueco.vercel.app/#guias" },
+        { "@type": "ListItem", "position": 3, "name": "Cuánto cuesta un hueco vacío" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="top" aria-label="Principal">
+  <div class="wrap">
+    <a class="logo" href="./" aria-label="Sinhueco, ir al inicio"><span class="logo-mark" aria-hidden="true"></span>sinhueco</a>
+    <div class="nav-actions">
+      <button class="icon-btn" type="button" id="theme-btn" aria-label="Cambiar tema claro/oscuro" title="Cambiar tema">
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <a class="btn btn-sm" href="./#lista">Lista de espera</a>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+<nav class="crumbs" aria-label="Migas de pan"><ol><li><a href="./">Inicio</a></li><li><a href="./#guias">Guías</a></li><li aria-current="page">Coste de un hueco</li></ol></nav>
+<article class="doc">
+  <p class="eyebrow">Guía · Números</p>
+  <h1>Cuánto cuesta un hueco vacío en la agenda de tu clínica</h1>
+  <p class="updated">Publicado el 22 de septiembre de 2026 · Equipo de Sinhueco</p>
+
+  <div class="answer">
+    <span class="eyebrow">Respuesta corta</span>
+    <p>Un hueco cuesta, como mínimo, lo que habrías cobrado por esa cita, porque el alquiler, los sueldos y el sillón se pagan igual. La cuenta mensual es: <strong>(cancelaciones por semana − las que ya rellenas) × precio medio de la cita × 4 semanas</strong>. Con 4 huecos a la semana y citas de 70 €, son 1.120 € al mes y unos 13.400 € al año.</p>
+  </div>
+
+  <h2 id="calculadora">Calculadora</h2>
+  <p>Pon tus números. Todo se calcula en tu navegador: no se envía nada.</p>
+  <form class="calc" id="calc" onsubmit="return false" aria-describedby="calc-note">
+    <div class="calc-fields">
+      <div class="field">
+        <label for="c">Cancelaciones de última hora por semana</label>
+        <input id="c" type="number" inputmode="decimal" min="0" step="1" value="4">
+        <span class="hint">Incluye los pacientes que no vienen sin avisar.</span>
+      </div>
+      <div class="field">
+        <label for="r">De esas, cuántas ya rellenáis</label>
+        <input id="r" type="number" inputmode="decimal" min="0" step="1" value="0">
+        <span class="hint">Las que recepción consigue ocupar llamando.</span>
+      </div>
+      <div class="field">
+        <label for="p">Precio medio de una cita (€)</label>
+        <input id="p" type="number" inputmode="decimal" min="0" step="1" value="70">
+      </div>
+      <div class="field">
+        <label for="q">Cuota mensual de una herramienta que estés valorando (€) <span style="font-weight:400;color:var(--muted)">(opcional)</span></label>
+        <input id="q" type="number" inputmode="decimal" min="0" step="1" value="">
+        <span class="hint">Para ver cuántas citas tendría que recuperar para pagarse.</span>
+      </div>
+    </div>
+    <div class="result" role="status" aria-live="polite">
+      <div><span>Huecos sin rellenar al mes</span><span id="o-huecos">16</span></div>
+      <div class="total"><span>Ingresos en juego al mes</span><span id="o-mes">1.120 €</span></div>
+      <div><span>Ingresos en juego al año</span><span id="o-ano">13.440 €</span></div>
+      <div class="be" id="o-be-row" hidden><span>Citas a recuperar al mes para cubrir la cuota</span><span id="o-be">–</span></div>
+    </div>
+    <p class="hint" id="calc-note" style="font-size:13px;color:var(--muted)">Usamos 4 semanas por mes para ir a lo conservador. Es una estimación: no incluye el coste del profesional parado ni los pacientes que se van a otra clínica por no encontrar cita.</p>
+  </form>
+
+  <h2>Cómo se calcula</h2>
+  <ol>
+    <li><strong>Huecos perdidos al mes</strong> = (cancelaciones por semana − las que ya rellenáis) × 4.</li>
+    <li><strong>Ingresos en juego al mes</strong> = huecos perdidos × precio medio de la cita.</li>
+    <li><strong>Punto de equilibrio de cualquier herramienta</strong> = cuota mensual ÷ precio medio de la cita. Es el número de citas que tiene que recuperar para pagarse.</li>
+  </ol>
+  <p>La fórmula 3 es la más útil para decidir: convierte una cuota en «cuántas citas al mes hay que salvar», algo que puedes comprobar contra tu agenda.</p>
+
+  <h2>Precios de referencia de una cita</h2>
+  <p>Si no tienes claro tu precio medio, estos rangos públicos sirven de orientación. Son de fuentes secundarias (webs de comparadores y de clínicas); usa siempre el tuyo.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Tipo de cita</th><th>Rango orientativo</th><th>Fuente</th></tr></thead>
+      <tbody>
+        <tr><td>Sesión de fisioterapia</td><td>40-60 €</td><td><a href="https://www.cronoshare.com/cuanto-cuesta/sesion-fisioterapia">Cronoshare</a></td></tr>
+        <tr><td>Limpieza dental</td><td>30-90 € (media en torno a 50 €)</td><td><a href="https://www.cleardent.es/cuanto-cuesta-una-limpieza-dental/">Cleardent</a> · <a href="https://cuantomecuesta.com/es/clinica-dental/">Cuánto me cuesta</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>¿Cuántas citas se pierden de media?</h2>
+  <p>No hay un estudio independiente y reciente para clínicas privadas en España. Los blogs de empresas del sector hablan de un 10-18 % de citas perdidas entre cancelaciones e inasistencias; tómalo solo como orientación. Lo que sí está bien estudiado es que los recordatorios por mensaje reducen las inasistencias: lo contamos en <a href="reducir-cancelaciones-clinica-dental.html">cómo reducir las cancelaciones de última hora</a>.</p>
+
+  <h2>Lo que la calculadora no cuenta</h2>
+  <ul>
+    <li><strong>El profesional parado.</strong> Si cobra un sueldo fijo, la clínica lo paga aunque el sillón esté vacío.</li>
+    <li><strong>El tiempo de recepción</strong> llamando uno a uno a pacientes para ocupar el hueco.</li>
+    <li><strong>Los pacientes que se van</strong> a otra clínica porque no encuentran cita pronto.</li>
+  </ul>
+  <p>Son costes reales pero difíciles de medir, así que no los sumamos al número.</p>
+
+  <div class="cta">
+    <h2>Recupera parte de ese dinero</h2>
+    <p>Sinhueco avisa por WhatsApp a tu lista de espera cuando alguien cancela, y el primero que acepta se queda la cita. Todavía no está abierto: apúntate para ser de las primeras clínicas.</p>
+    <a class="btn" href="./#lista">Quiero acceso anticipado</a>
+  </div>
+
+  <h2>Fuentes</h2>
+  <ol class="sources">
+    <li>Precio de la fisioterapia: <a href="https://www.cronoshare.com/cuanto-cuesta/sesion-fisioterapia">cronoshare.com/cuanto-cuesta/sesion-fisioterapia</a></li>
+    <li>Precio de la limpieza dental: <a href="https://www.cleardent.es/cuanto-cuesta-una-limpieza-dental/">cleardent.es</a> · <a href="https://cuantomecuesta.com/es/clinica-dental/">cuantomecuesta.com</a></li>
+    <li>Gurol-Urganci I y otros. <em>Mobile phone messaging reminders for attendance at healthcare appointments.</em> Cochrane, 2013. <a href="https://doi.org/10.1002/14651858.CD007458.pub3">doi.org/10.1002/14651858.CD007458.pub3</a></li>
+  </ol>
+
+  <nav class="more" aria-label="Más guías">
+    <p class="eyebrow">Más guías</p>
+    <ul>
+      <li><a href="reducir-cancelaciones-clinica-dental.html">Cómo reducir las cancelaciones de última hora en una clínica dental</a></li>
+      <li><a href="lista-espera-whatsapp-rgpd.html">Lista de espera por WhatsApp: cómo funciona y qué dice el RGPD</a></li>
+    </ul>
+  </nav>
+</article>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Sinhueco</span>
+    <span class="legal-links"><a href="aviso-legal.html">Aviso legal</a><a href="politica-privacidad.html">Política de privacidad</a></span>
+    <span>Hecho en Madrid</span>
+  </div>
+</footer>
+<script src="assets/tema.js" defer></script>
+<script>
+(function(){
+  var g = function(n){ return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, "."); };
+  var f = function(n){ return g(n) + " €"; };
+  function num(id){ var v = parseFloat(String(document.getElementById(id).value).replace(",", ".")); return isFinite(v) && v > 0 ? v : 0; }
+  function calc(){
+    var c = num("c"), r = Math.min(num("r"), c), p = num("p"), q = num("q");
+    var huecos = (c - r) * 4, mes = huecos * p;
+    document.getElementById("o-huecos").textContent = g(huecos);
+    document.getElementById("o-mes").textContent = f(mes);
+    document.getElementById("o-ano").textContent = f(mes * 12);
+    var row = document.getElementById("o-be-row");
+    if (q > 0 && p > 0){ row.hidden = false; document.getElementById("o-be").textContent = (function(n){ return n + (n === 1 ? " cita" : " citas"); })(Math.ceil(q / p)); }
+    else row.hidden = true;
+  }
+  document.getElementById("calc").addEventListener("input", calc);
+  calc();
+})();
+</script>
+</body>
+</html>

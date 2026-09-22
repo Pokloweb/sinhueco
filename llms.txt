@@ -1,0 +1,44 @@
+# Sinhueco
+
+> Sinhueco es una startup española (Madrid, 2026) que prepara automatizaciones con IA para clínicas privadas: dentales, fisioterapia, medicina estética, podología, psicología y especialidades médicas. Su primer producto rellena las citas canceladas avisando por WhatsApp a la lista de espera de la clínica. Todavía no está abierto al público ni tiene clientes: acepta clínicas en una lista de espera para el lanzamiento.
+
+<!-- Si se compra sinhueco.com, sustituir https://sinhueco.vercel.app por https://sinhueco.com en todo este archivo. -->
+
+## Qué hace (primer producto: relleno de huecos)
+
+- Cuando un paciente cancela, recepción marca el hueco (o lo detecta la agenda, si está conectada).
+- Sinhueco escribe por WhatsApp, desde el número de la clínica y por la API oficial de WhatsApp Business, a los pacientes de la lista de espera que encajan con ese hueco. Lo hace en cascada: a pocos pacientes a la vez, no a todos.
+- El primero que confirma se queda la cita; al resto se le dice que sigue en la lista.
+- Cada mensaje dice desde la primera línea que es un aviso automático de la clínica (art. 50 del Reglamento europeo de IA).
+- No sustituye al programa de gestión de la clínica (Gesden, Clinic Cloud, Doctoralia, agenda en papel...): trabaja al lado, sin migrar datos.
+
+## Funciones previstas después (aún no disponibles)
+
+- Notas clínicas en formato SOAP a partir de lo que dicta el profesional; el profesional las revisa siempre antes de guardarlas.
+- Triaje por WhatsApp con foto: recoge los síntomas y la foto, ordena la información según el protocolo de la clínica y ofrece el primer hueco libre; el equipo de la clínica revisa los casos. No diagnostica ni valora la urgencia por sí solo.
+- Seguimiento postoperatorio (pregunta al paciente cómo va y avisa a la clínica si algo no va bien) e invitación a todos los pacientes, sin filtrar, a dejar su opinión en Google.
+
+## Para quién
+
+Clínicas privadas en España con agenda llena, cancelaciones frecuentes y recepción desbordada, normalmente de 1 a 10 profesionales.
+
+## Protección de datos
+
+La clínica es responsable del tratamiento y Sinhueco actúa como encargado del tratamiento (art. 28 RGPD), con contrato. Solo usa los datos necesarios para ofrecer el hueco (nombre, teléfono, franja y tipo de cita) y no los usa para fines propios.
+
+## Precio
+
+Cuota mensual por clínica. Las clínicas de la lista de espera tendrán precio de fundador, que se comunica antes de pagar nada. No hay precios públicos todavía.
+
+## Páginas principales
+
+- [Inicio](https://sinhueco.vercel.app/): qué es Sinhueco, cómo funciona, preguntas frecuentes y formulario de la lista de espera.
+- [Cómo reducir las cancelaciones de última hora en una clínica dental](https://sinhueco.vercel.app/reducir-cancelaciones-clinica-dental.html): recordatorios, confirmación, política de cancelación y lista de espera, con evidencia (revisión Cochrane 2013, ensayos PLoS One 2015).
+- [Lista de espera por WhatsApp: cómo funciona y qué dice el RGPD](https://sinhueco.vercel.app/lista-espera-whatsapp-rgpd.html): datos de salud, permiso del paciente, encargado del tratamiento, requisitos de WhatsApp y aviso de IA.
+- [Cuánto cuesta un hueco vacío en la agenda de tu clínica](https://sinhueco.vercel.app/coste-hueco-agenda-clinica.html): fórmula y calculadora del dinero que se pierde por cancelaciones sin rellenar.
+
+## Opcional
+
+- [Texto completo para modelos](https://sinhueco.vercel.app/llms-full.txt)
+- [Política de privacidad](https://sinhueco.vercel.app/politica-privacidad.html)
+- [Aviso legal](https://sinhueco.vercel.app/aviso-legal.html)

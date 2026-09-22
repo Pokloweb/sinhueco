@@ -1,0 +1,309 @@
+# Sinhueco (texto completo)
+
+> Sinhueco es una startup española (Madrid, 2026) que prepara automatizaciones con IA para clínicas privadas: dentales, fisioterapia, medicina estética, podología, psicología y especialidades médicas. Su primer producto rellena las citas canceladas avisando por WhatsApp a la lista de espera de la clínica. Todavía no está abierto al público ni tiene clientes: acepta clínicas en una lista de espera para el lanzamiento.
+
+<!-- Si se compra sinhueco.com, sustituir https://sinhueco.vercel.app por https://sinhueco.com en todo este archivo. -->
+
+## Qué hace (primer producto: relleno de huecos)
+
+- Cuando un paciente cancela, recepción marca el hueco (o lo detecta la agenda, si está conectada).
+- Sinhueco escribe por WhatsApp, desde el número de la clínica y por la API oficial de WhatsApp Business, a los pacientes de la lista de espera que encajan con ese hueco. Lo hace en cascada: a pocos pacientes a la vez, no a todos.
+- El primero que confirma se queda la cita; al resto se le dice que sigue en la lista.
+- Cada mensaje dice desde la primera línea que es un aviso automático de la clínica (art. 50 del Reglamento europeo de IA).
+- No sustituye al programa de gestión de la clínica (Gesden, Clinic Cloud, Doctoralia, agenda en papel...): trabaja al lado, sin migrar datos.
+
+## Funciones previstas después (aún no disponibles)
+
+- Notas clínicas en formato SOAP a partir de lo que dicta el profesional; el profesional las revisa siempre antes de guardarlas.
+- Triaje por WhatsApp con foto: recoge los síntomas y la foto, ordena la información según el protocolo de la clínica y ofrece el primer hueco libre; el equipo de la clínica revisa los casos. No diagnostica ni valora la urgencia por sí solo.
+- Seguimiento postoperatorio (pregunta al paciente cómo va y avisa a la clínica si algo no va bien) e invitación a todos los pacientes, sin filtrar, a dejar su opinión en Google.
+
+## Para quién
+
+Clínicas privadas en España con agenda llena, cancelaciones frecuentes y recepción desbordada, normalmente de 1 a 10 profesionales.
+
+## Protección de datos
+
+La clínica es responsable del tratamiento y Sinhueco actúa como encargado del tratamiento (art. 28 RGPD), con contrato. Solo usa los datos necesarios para ofrecer el hueco (nombre, teléfono, franja y tipo de cita) y no los usa para fines propios.
+
+## Precio
+
+Cuota mensual por clínica. Las clínicas de la lista de espera tendrán precio de fundador, que se comunica antes de pagar nada. No hay precios públicos todavía.
+
+## Preguntas frecuentes (https://sinhueco.vercel.app/)
+
+### ¿Qué es Sinhueco?
+
+Un servicio para clínicas privadas en España que rellena las citas canceladas avisando por WhatsApp a la lista de espera de la clínica. Es lo primero que lanzamos; después vendrán las notas clínicas por voz, el triaje por WhatsApp y el seguimiento de pacientes. Todavía no está abierto: estamos reuniendo a las primeras clínicas.
+
+### ¿Cómo funciona el relleno de huecos?
+
+Cuando alguien cancela, Sinhueco escribe por WhatsApp a pocos pacientes de la lista de espera que encajan con ese hueco, por orden. El primero que responde que sí se queda la cita y al resto se le dice que sigue en la lista. Así no se ofrece la misma cita a veinte personas a la vez.
+
+### ¿Tengo que cambiar de programa de gestión?
+
+No. Sinhueco trabaja junto a lo que ya usas. Al principio, recepción marca la cancelación con un mensaje o un botón; después conectaremos con los programas que lo permitan. Dinos cuál usas en el formulario y priorizaremos esa integración.
+
+### ¿Los mensajes salen de mi WhatsApp?
+
+Salen del número de tu clínica, por la API oficial de WhatsApp Business, con tu tono y tus plantillas. Tú apruebas cómo habla antes de activarlo, y cada mensaje dice desde la primera línea que es un aviso automático de la clínica, para que el paciente sepa que le escribe un asistente.
+
+### ¿Y los datos de salud?
+
+Son datos especialmente protegidos por el RGPD y los tratamos así desde el principio. Sinhueco actúa como encargado del tratamiento de tu clínica, con contrato, y solo usa los datos necesarios para ofrecer el hueco. Las notas clínicas siempre las revisa el profesional antes de guardarlas.
+
+### ¿Qué necesito para empezar?
+
+Pacientes que quieran adelantar su cita y que hayan aceptado que la clínica les escriba por WhatsApp para ello. Te damos el texto para pedir ese permiso y te ayudamos a montar la lista.
+
+### ¿Cuánto costará?
+
+Una cuota mensual por clínica. Las clínicas de la lista de espera tendrán precio de fundador, y te lo diremos antes de que pagues nada.
+
+### ¿Para qué clínicas es?
+
+Clínicas privadas con agenda llena y cancelaciones cada semana: dentales, fisioterapia, medicina estética, podología, psicología y especialidades médicas.
+
+---
+
+URL: https://sinhueco.vercel.app/reducir-cancelaciones-clinica-dental.html
+
+Guía · Agenda
+
+## Cómo reducir las cancelaciones de última hora en una clínica dental
+
+Publicado el 22 de septiembre de 2026 · Equipo de Sinhueco
+
+Respuesta corta
+
+Hay que atacar dos problemas distintos. Los pacientes que no se presentan se reducen con recordatorios (por SMS o WhatsApp) y pidiendo confirmación: una revisión Cochrane encontró que los recordatorios por mensaje de móvil subieron la asistencia del 67,8 % al 78,6 %. Las cancelaciones con aviso no se pueden evitar del todo, pero sí se pueden recuperar: con una lista de espera de pacientes que quieren adelantar su cita y un aviso rápido, el hueco se vuelve a ocupar.
+
+### Cancelación, no-show y hueco: tres cosas distintas
+
+- No-show o inasistencia: el paciente no viene y no avisa. El sillón queda vacío y no hay tiempo de reaccionar.
+
+- Cancelación de última hora: el paciente avisa con horas o un día de margen. Queda un hueco que todavía se puede ocupar.
+
+- Hueco: el tiempo de agenda que se pierde. Es lo que cuesta dinero, venga de una cosa o de la otra.
+
+Separarlo importa porque las soluciones son distintas: contra el no-show sirve que el paciente se acuerde y confirme; contra la cancelación sirve tener a quién ofrecer el hueco.
+
+### ¿Cuántas citas se pierden en una clínica dental en España?
+
+No hemos encontrado un estudio independiente y reciente con la tasa de cancelaciones de las clínicas dentales privadas españolas. Las cifras que circulan vienen de blogs de empresas de software y seguros, que hablan de un 10 % a 18 % de citas perdidas entre cancelaciones e inasistencias. Tómalo como orientación, no como dato. La cifra que de verdad importa es la tuya: cuenta durante un mes cuántas citas se anulan con menos de 24 horas y cuántos pacientes no vienen.
+
+### Qué funciona según la evidencia
+
+#### 1. Recordatorios por mensaje al móvil
+
+La revisión Cochrane de Gurol-Urganci y colaboradores (2013), con 8 ensayos aleatorizados, concluyó con evidencia de calidad moderada que los recordatorios por mensaje de texto mejoran la asistencia frente a no recordar nada (riesgo relativo 1,14). La asistencia fue del 67,8 % sin recordatorio y del 78,6 % con mensaje. Los mensajes tuvieron un efecto parecido a las llamadas telefónicas y en dos estudios costaban entre un 55 % y un 65 % menos por asistencia conseguida.
+
+67,8 %asistencia sin recordatorio (Cochrane, 2013)
+
+78,6 %asistencia con recordatorio por mensaje
+
+55-65 %menos coste por asistencia que llamar por teléfono
+
+#### 2. Qué dice el mensaje importa
+
+En dos ensayos con casi 20.000 pacientes de un hospital de Londres (Hallsworth y colaboradores, PLoS One, 2015), el recordatorio que decía cuánto le cuesta al sistema una cita perdida bajó las inasistencias del 11,1 % al 8,4 %. En una clínica privada no tiene sentido copiar esa frase tal cual, pero sí la idea: un mensaje claro, que pida confirmar o anular con un toque, y que recuerde que ese hueco lo necesita otra persona.
+
+#### 3. Pedir confirmación, no solo avisar
+
+Un recordatorio que pide «responde SÍ para confirmar o NO para anular» convierte un posible no-show en una cancelación con aviso, que ya se puede recuperar. Cuanto antes llegue el «no», más fácil es ocupar el hueco. Por eso conviene mandarlo con 24-48 horas de margen, no la misma mañana.
+
+#### 4. Una política de cancelación clara
+
+Explica al reservar con cuánta antelación hay que avisar y qué pasa si no se avisa. Muchas clínicas piden una señal en tratamientos largos. Si decides cobrar penalizaciones, infórmalo por escrito antes de la cita y consúltalo con tu asesor: aquí no damos asesoramiento legal.
+
+#### 5. Una lista de espera que se use de verdad
+
+Casi todas las clínicas tienen pacientes que querrían una cita antes. El problema es que la lista está en un papel o en la cabeza de recepción y, cuando alguien cancela a las 8:30, no hay tiempo de llamar a seis personas. Lo que funciona:
+
+- Preguntar al reservar: «¿Quieres que te avisemos si se libera algo antes?». Apuntar la franja que le viene bien y el tipo de cita.
+
+- Guardar su permiso para escribirle por WhatsApp con ese fin (ver [qué dice el RGPD](https://sinhueco.vercel.app/lista-espera-whatsapp-rgpd.html)).
+
+- Cuando hay un hueco, avisar a pocos pacientes a la vez, por orden, y dar el hueco al primero que confirme. Al resto, decirle que sigue en la lista.
+
+### ¿Cuánto dinero te juegas?
+
+Cuatro cancelaciones a la semana en citas de 70 € son 1.120 € al mes de ingresos en juego. Haz la cuenta con tus números en la [calculadora de cuánto cuesta un hueco vacío](https://sinhueco.vercel.app/coste-hueco-agenda-clinica.html).
+
+### Dónde encaja Sinhueco
+
+Sinhueco se ocupa del punto 5: cuando recepción marca una cancelación, escribe por WhatsApp, desde el número de la clínica, a los pacientes de la lista de espera que encajan con ese hueco, y se lo queda el primero que acepta. El mensaje dice desde la primera línea que es un aviso automático de la clínica. No sustituye a tu programa de gestión: trabaja al lado. Todavía no está abierto; estamos buscando las primeras clínicas.
+
+### ¿Pierdes citas cada semana?
+
+Apúntate a la lista de espera y te contamos cuándo abrimos las primeras plazas.
+
+[Quiero acceso anticipado](https://sinhueco.vercel.app/#lista)
+
+### Fuentes
+
+- Gurol-Urganci I, de Jongh T, Vodopivec-Jamsek V, Atun R, Car J. Mobile phone messaging reminders for attendance at healthcare appointments. Cochrane Database of Systematic Reviews 2013, número 12, CD007458. [doi.org/10.1002/14651858.CD007458.pub3](https://doi.org/10.1002/14651858.CD007458.pub3)
+
+- Hallsworth M, Berry D, Sanders M y otros. Stating Appointment Costs in SMS Reminders Reduces Missed Hospital Appointments: Findings from Two Randomised Controlled Trials. PLoS One, 2015. [doi.org/10.1371/journal.pone.0137306](https://doi.org/10.1371/journal.pone.0137306)
+
+- Cifras orientativas de inasistencia en clínicas españolas (blogs de proveedores, sin estudio independiente): [Previsión Mallorquina](https://www.previsionmallorquina.com/actualidad/odontologos/evitar-cancelaciones-ultima-hora-clinica-dental) · [Hellomatik](https://hellomatik.com/es/blog/que-dice-realmente-tu-tasa-de-inasistencias-sobre-tu-clinica)
+
+---
+
+URL: https://sinhueco.vercel.app/lista-espera-whatsapp-rgpd.html
+
+Guía · WhatsApp y protección de datos
+
+## Lista de espera por WhatsApp: cómo funciona y qué dice el RGPD
+
+Publicado el 22 de septiembre de 2026 · Equipo de Sinhueco
+
+Respuesta corta
+
+Una clínica puede avisar por WhatsApp a los pacientes de su lista de espera cuando se libera una cita, siempre que: el paciente haya aceptado recibir esos avisos de esa clínica por WhatsApp; se use la API oficial de WhatsApp Business; los mensajes lleven los datos mínimos (sin diagnósticos); el paciente sepa que le escribe un asistente automático; y, si un proveedor gestiona los mensajes, haya firmado un contrato de encargado del tratamiento con la clínica.
+
+Esta guía resume la normativa para que sepas qué preguntar. No es asesoramiento legal: revísalo con tu asesor o tu delegado de protección de datos antes de ponerlo en marcha.
+
+### Cómo funciona una lista de espera por WhatsApp
+
+- El paciente se apunta. Al reservar, recepción le pregunta si quiere que le avisen si se libera algo antes. Se anota su franja preferida y el tipo de cita, y se guarda su permiso para escribirle por WhatsApp.
+
+- Alguien cancela. Recepción marca el hueco (o lo detecta la agenda, si está conectada).
+
+- Aviso en cascada. Se escribe a uno o dos pacientes que encajan con ese hueco; si no responden en unos minutos, a los siguientes. Así no se ofrece la misma cita a veinte personas.
+
+- El primero que confirma se la queda. Se apunta en la agenda y al resto se le dice que sigue en la lista.
+
+Un ejemplo de mensaje con los datos justos:
+
+Mensaje automático de Clínica Ejemplo: se ha liberado una cita el martes a las 9:45. ¿La quieres? Responde SÍ para reservarla o NO para seguir en la lista.EJEMPLO
+
+### ¿Estar en una lista de espera es un dato de salud?
+
+Sí, en la práctica. Saber que una persona espera cita en una clínica dental o de fisioterapia ya dice algo de su salud, y el RGPD protege especialmente los datos de salud (artículo 9). Por eso conviene tratar la lista de espera con el mismo cuidado que la historia clínica: mínimos datos, acceso limitado y borrado cuando ya no hace falta.
+
+### ¿Qué base legal tiene la clínica?
+
+La clínica es la responsable del tratamiento: decide para qué usa los datos de sus pacientes. Para gestionar las citas se apoya en la asistencia sanitaria (artículo 9.2.h del RGPD y la Ley Orgánica 3/2018, LOPDGDD) y en la relación con el paciente. Para escribirle por WhatsApp ofreciéndole otra cita, lo prudente es pedirle permiso expreso al apuntarle, porque además WhatsApp lo exige (ver abajo). Un texto sencillo:
+
+Acepto que Clínica Ejemplo me escriba por WhatsApp para ofrecerme citas que se liberen antes de la mía. Puedo darme de baja cuando quiera.EJEMPLO DE CASILLA
+
+### ¿Y si lo gestiona un proveedor?
+
+Si una empresa externa envía los mensajes o guarda la lista por cuenta de la clínica, es encargada del tratamiento (artículo 28 del RGPD) y tiene que haber un contrato que diga qué datos trata, para qué, con qué medidas de seguridad, qué subencargados usa (por ejemplo, Meta para WhatsApp) y qué pasa con los datos al terminar. El proveedor no puede usar los datos de tus pacientes para nada propio.
+
+### Lo que exige WhatsApp
+
+- API oficial. Para una clínica, lo correcto es WhatsApp Business Platform (la API de Meta), con el número de la clínica. Las herramientas no oficiales que automatizan la aplicación normal pueden acabar con el número bloqueado.
+
+- Permiso previo (opt-in). La política de WhatsApp Business pide que la persona haya aceptado recibir mensajes de esa empresa por WhatsApp antes de escribirle por iniciativa propia.
+
+- Plantillas aprobadas. Los mensajes que inicia la empresa usan plantillas que revisa Meta. Un aviso de hueco sin lenguaje comercial encaja en la categoría de «utilidad»; si se le añade una oferta, pasa a «marketing».
+
+### El aviso de asistente automático (AI Act)
+
+Si los mensajes los escribe o gestiona un sistema de inteligencia artificial, el artículo 50 del Reglamento europeo de IA obliga a que la persona sepa que interactúa con un sistema automático, salvo que sea evidente. Esa obligación se aplica desde el 2 de agosto de 2026. Lo más sencillo es decirlo en la primera línea: «Mensaje automático de Clínica Ejemplo».
+
+### Buenas prácticas que recomendamos
+
+- En el mensaje, la clínica, el día y la hora. Nada de tratamientos ni diagnósticos.
+
+- Guardar la fecha y el texto con el que el paciente aceptó los avisos.
+
+- Ofrecer la baja en cualquier momento y respetarla al momento.
+
+- Borrar al paciente de la lista cuando ya tiene su cita o deja de interesarle.
+
+- Pocos mensajes y solo cuando hay un hueco real: ni promociones ni envíos masivos.
+
+### Cómo lo planteamos en Sinhueco
+
+Sinhueco trabaja como encargado del tratamiento de la clínica, con contrato. Los mensajes salen del número de WhatsApp de la clínica por la API oficial, con plantillas que la clínica aprueba, y dicen desde la primera línea que son un aviso automático. Solo usamos los datos que hacen falta para ofrecer el hueco (nombre, teléfono, franja y tipo de cita) y no los usamos para nada más. Sinhueco todavía no está abierto: estamos preparando el lanzamiento con las primeras clínicas.
+
+### ¿Quieres una lista de espera que se rellene sola?
+
+Apúntate y te contamos cuándo abrimos las primeras plazas.
+
+[Quiero acceso anticipado](https://sinhueco.vercel.app/#lista)
+
+### Fuentes
+
+- Reglamento (UE) 2016/679, Reglamento General de Protección de Datos (arts. 4, 9 y 28). [eur-lex.europa.eu/eli/reg/2016/679/oj](https://eur-lex.europa.eu/eli/reg/2016/679/oj)
+
+- Ley Orgánica 3/2018, de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD). [boe.es · BOE-A-2018-16673](https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673)
+
+- Reglamento (UE) 2024/1689 de Inteligencia Artificial, artículo 50 (obligaciones de transparencia). [eur-lex.europa.eu/eli/reg/2024/1689/oj](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)
+
+- WhatsApp Business Messaging Policy. [business.whatsapp.com/policy](https://business.whatsapp.com/policy)
+
+- Meta, obtener el consentimiento (opt-in) en WhatsApp Business Platform. [developers.facebook.com/docs/whatsapp/overview/getting-opt-in](https://developers.facebook.com/docs/whatsapp/overview/getting-opt-in)
+
+- AEPD, protección de datos en el ámbito sanitario. [aepd.es/areas-de-actuacion/salud](https://www.aepd.es/areas-de-actuacion/salud)
+
+- AEPD, directrices para los contratos entre responsables y encargados. [aepd.es/guias/guia-directrices-contratos.pdf](https://www.aepd.es/guias/guia-directrices-contratos.pdf)
+
+---
+
+URL: https://sinhueco.vercel.app/coste-hueco-agenda-clinica.html
+
+Guía · Números
+
+## Cuánto cuesta un hueco vacío en la agenda de tu clínica
+
+Publicado el 22 de septiembre de 2026 · Equipo de Sinhueco
+
+Respuesta corta
+
+Un hueco cuesta, como mínimo, lo que habrías cobrado por esa cita, porque el alquiler, los sueldos y el sillón se pagan igual. La cuenta mensual es: (cancelaciones por semana − las que ya rellenas) × precio medio de la cita × 4 semanas. Con 4 huecos a la semana y citas de 70 €, son 1.120 € al mes y unos 13.400 € al año.
+
+### Calculadora
+
+Pon tus números. Todo se calcula en tu navegador: no se envía nada.
+
+### Cómo se calcula
+
+- Huecos perdidos al mes = (cancelaciones por semana − las que ya rellenáis) × 4.
+
+- Ingresos en juego al mes = huecos perdidos × precio medio de la cita.
+
+- Punto de equilibrio de cualquier herramienta = cuota mensual ÷ precio medio de la cita. Es el número de citas que tiene que recuperar para pagarse.
+
+La fórmula 3 es la más útil para decidir: convierte una cuota en «cuántas citas al mes hay que salvar», algo que puedes comprobar contra tu agenda.
+
+### Precios de referencia de una cita
+
+Si no tienes claro tu precio medio, estos rangos públicos sirven de orientación. Son de fuentes secundarias (webs de comparadores y de clínicas); usa siempre el tuyo.
+
+Tipo de cita | Rango orientativo | Fuente
+
+Sesión de fisioterapia | 40-60 € | [Cronoshare](https://www.cronoshare.com/cuanto-cuesta/sesion-fisioterapia)
+
+Limpieza dental | 30-90 € (media en torno a 50 €) | [Cleardent](https://www.cleardent.es/cuanto-cuesta-una-limpieza-dental/) · [Cuánto me cuesta](https://cuantomecuesta.com/es/clinica-dental/)
+
+### ¿Cuántas citas se pierden de media?
+
+No hay un estudio independiente y reciente para clínicas privadas en España. Los blogs de empresas del sector hablan de un 10-18 % de citas perdidas entre cancelaciones e inasistencias; tómalo solo como orientación. Lo que sí está bien estudiado es que los recordatorios por mensaje reducen las inasistencias: lo contamos en [cómo reducir las cancelaciones de última hora](https://sinhueco.vercel.app/reducir-cancelaciones-clinica-dental.html).
+
+### Lo que la calculadora no cuenta
+
+- El profesional parado. Si cobra un sueldo fijo, la clínica lo paga aunque el sillón esté vacío.
+
+- El tiempo de recepción llamando uno a uno a pacientes para ocupar el hueco.
+
+- Los pacientes que se van a otra clínica porque no encuentran cita pronto.
+
+Son costes reales pero difíciles de medir, así que no los sumamos al número.
+
+### Recupera parte de ese dinero
+
+Sinhueco avisa por WhatsApp a tu lista de espera cuando alguien cancela, y el primero que acepta se queda la cita. Todavía no está abierto: apúntate para ser de las primeras clínicas.
+
+[Quiero acceso anticipado](https://sinhueco.vercel.app/#lista)
+
+### Fuentes
+
+- Precio de la fisioterapia: [cronoshare.com/cuanto-cuesta/sesion-fisioterapia](https://www.cronoshare.com/cuanto-cuesta/sesion-fisioterapia)
+
+- Precio de la limpieza dental: [cleardent.es](https://www.cleardent.es/cuanto-cuesta-una-limpieza-dental/) · [cuantomecuesta.com](https://cuantomecuesta.com/es/clinica-dental/)
+
+- Gurol-Urganci I y otros. Mobile phone messaging reminders for attendance at healthcare appointments. Cochrane, 2013. [doi.org/10.1002/14651858.CD007458.pub3](https://doi.org/10.1002/14651858.CD007458.pub3)

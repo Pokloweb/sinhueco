@@ -3,8 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Sinhueco · Rellena las cancelaciones de tu clínica por WhatsApp</title>
-<meta name="description" content="Sinhueco rellena las cancelaciones de tu clínica por WhatsApp, escribe tus notas clínicas por voz y se ocupa del seguimiento. Únete a la lista de espera.">
+<title>Lista de espera por WhatsApp para rellenar cancelaciones · Sinhueco</title>
+<meta name="description" content="Cuando un paciente cancela, Sinhueco avisa por WhatsApp a la lista de espera de tu clínica y el primero que acepta se queda la cita. Para clínicas dentales, fisio, estética y más.">
+<!-- URLs canónicas: si se compra sinhueco.com, sustituir https://sinhueco.vercel.app por https://sinhueco.com
+     en todos los .html, sitemap.xml, robots.txt, llms.txt y llms-full.txt (buscar y reemplazar) y redirigir el dominio viejo con un 301. -->
 <link rel="canonical" href="https://sinhueco.vercel.app/">
 <link rel="alternate" hreflang="es-ES" href="https://sinhueco.vercel.app/">
 <link rel="alternate" hreflang="x-default" href="https://sinhueco.vercel.app/">
@@ -32,18 +34,120 @@
       "@type": "Organization",
       "@id": "https://sinhueco.vercel.app/#org",
       "name": "Sinhueco",
-      "url": "https://sinhueco.vercel.app/"
+      "url": "https://sinhueco.vercel.app/",
+      "description": "Startup española que prepara automatizaciones con IA para clínicas privadas, empezando por el relleno de citas canceladas por WhatsApp.",
+      "areaServed": "ES",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Madrid",
+        "addressCountry": "ES"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://sinhueco.vercel.app/#web",
+      "name": "Sinhueco",
+      "url": "https://sinhueco.vercel.app/",
+      "inLanguage": "es-ES",
+      "publisher": {
+        "@id": "https://sinhueco.vercel.app/#org"
+      }
     },
     {
       "@type": "SoftwareApplication",
+      "@id": "https://sinhueco.vercel.app/#app",
       "name": "Sinhueco",
       "url": "https://sinhueco.vercel.app/",
       "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "Gestión de citas y lista de espera para clínicas",
       "operatingSystem": "Web",
       "inLanguage": "es-ES",
       "areaServed": "ES",
-      "description": "Automatizaciones con IA para clínicas privadas: relleno de citas canceladas por WhatsApp con la lista de espera, notas clínicas por voz y seguimiento de pacientes.",
-      "publisher": { "@id": "https://sinhueco.vercel.app/#org" }
+      "description": "Relleno de citas canceladas en clínicas privadas: cuando un paciente cancela, avisa por WhatsApp a la lista de espera de la clínica y el primero que acepta se queda la cita. En preparación: notas clínicas SOAP por voz, triaje por WhatsApp y seguimiento de pacientes.",
+      "featureList": [
+        "Relleno de huecos por cancelación avisando por WhatsApp a la lista de espera",
+        "Aviso en cascada: el primer paciente que confirma se queda la cita",
+        "Mensajes desde el número de la clínica por la API oficial de WhatsApp Business",
+        "Funciona junto al programa de gestión actual de la clínica"
+      ],
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "Clínicas privadas: dentales, fisioterapia, medicina estética, podología, psicología y especialidades médicas"
+      },
+      "publisher": {
+        "@id": "https://sinhueco.vercel.app/#org"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://sinhueco.vercel.app/#faq",
+      "inLanguage": "es-ES",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Qué es Sinhueco?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Un servicio para clínicas privadas en España que rellena las citas canceladas avisando por WhatsApp a la lista de espera de la clínica. Es lo primero que lanzamos; después vendrán las notas clínicas por voz, el triaje por WhatsApp y el seguimiento de pacientes. Todavía no está abierto: estamos reuniendo a las primeras clínicas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo funciona el relleno de huecos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cuando alguien cancela, Sinhueco escribe por WhatsApp a pocos pacientes de la lista de espera que encajan con ese hueco, por orden. El primero que responde que sí se queda la cita y al resto se le dice que sigue en la lista. Así no se ofrece la misma cita a veinte personas a la vez."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Tengo que cambiar de programa de gestión?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Sinhueco trabaja junto a lo que ya usas. Al principio, recepción marca la cancelación con un mensaje o un botón; después conectaremos con los programas que lo permitan. Dinos cuál usas en el formulario y priorizaremos esa integración."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Los mensajes salen de mi WhatsApp?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Salen del número de tu clínica, por la API oficial de WhatsApp Business, con tu tono y tus plantillas. Tú apruebas cómo habla antes de activarlo, y cada mensaje dice desde la primera línea que es un aviso automático de la clínica, para que el paciente sepa que le escribe un asistente."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Y los datos de salud?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Son datos especialmente protegidos por el RGPD y los tratamos así desde el principio. Sinhueco actúa como encargado del tratamiento de tu clínica, con contrato, y solo usa los datos necesarios para ofrecer el hueco. Las notas clínicas siempre las revisa el profesional antes de guardarlas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué necesito para empezar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pacientes que quieran adelantar su cita y que hayan aceptado que la clínica les escriba por WhatsApp para ello. Te damos el texto para pedir ese permiso y te ayudamos a montar la lista."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto costará?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Una cuota mensual por clínica. Las clínicas de la lista de espera tendrán precio de fundador, y te lo diremos antes de que pagues nada."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Para qué clínicas es?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Clínicas privadas con agenda llena y cancelaciones cada semana: dentales, fisioterapia, medicina estética, podología, psicología y especialidades médicas."
+          }
+        }
+      ]
     }
   ]
 }
@@ -195,6 +299,9 @@ section[id]{scroll-margin-top:64px}
 .perk .num{font:500 12px/1 var(--mono);color:var(--fill);letter-spacing:.08em}
 .perk h3{font-size:24px;font-weight:700}
 .perk p{color:var(--muted);font-size:16px}
+.perk.guide{text-decoration:none;transition:border-color .2s ease,transform .15s var(--ease)}
+.perk.guide:hover{border-color:var(--ink);transform:translateY(-2px)}
+.perk.guide h3{font-size:22px}
 
 /* waitlist */
 .wl{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:clamp(24px,5vw,56px);display:grid;grid-template-columns:.9fr 1.1fr;gap:48px}
@@ -277,7 +384,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
 <nav aria-label="Principal">
   <div class="wrap">
-    <a class="logo" href="#" aria-label="Sinhueco, ir al inicio"><span class="logo-mark" aria-hidden="true"></span>sinhueco</a>
+    <a class="logo" href="./" aria-label="Sinhueco, ir al inicio"><span class="logo-mark" aria-hidden="true"></span>sinhueco</a>
     <div class="nav-actions">
       <button class="icon-btn" type="button" id="theme-btn" aria-label="Cambiar tema claro/oscuro" title="Cambiar tema">
         <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
@@ -301,7 +408,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       </div>
     </div>
 
-    <div class="agenda" role="img" aria-label="Ejemplo: una cita de las 9:45 se cancela, Sinhueco avisa por WhatsApp a una paciente de la lista de espera y ella acepta, así que el hueco queda ocupado.">
+    <div class="agenda" role="img" aria-label="Ejemplo: una cita de las 9:45 se cancela, Sinhueco manda un aviso automático por WhatsApp a una paciente de la lista de espera y ella acepta, así que el hueco queda ocupado.">
       <div class="agenda-head"><b>Martes · Gabinete 2</b><span>EJEMPLO</span></div>
       <ul class="slots">
         <li class="slot"><time>09:00</time><div><div class="who">L. Martín</div><div class="what">Revisión + limpieza</div></div><span></span></li>
@@ -312,7 +419,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
         <li class="slot"><time>10:30</time><div><div class="who">A. Ruiz</div><div class="what">Endodoncia</div></div><span></span></li>
       </ul>
       <div class="wa">
-        <div class="bubble">Hola Paula, se ha liberado una cita hoy a las 9:45 para tu empaste. ¿Te la reservo?<small>09:12</small></div>
+        <div class="bubble">Mensaje automático de tu clínica: Paula, se ha liberado una cita hoy a las 9:45. ¿Te la reservo?<small>09:12</small></div>
         <div class="bubble them">¡Sí, perfecto! Voy para allá<small>09:14</small></div>
       </div>
     </div>
@@ -330,12 +437,12 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       <div class="step reveal">
         <span class="when">Antes de la cita</span>
         <h3>Triaje por WhatsApp</h3>
-        <p>El paciente manda una foto o te cuenta qué le pasa. Sinhueco valora la urgencia, le da cita en el gabinete que toca y le explica cómo prepararse.</p>
+        <p>El paciente cuenta qué le pasa y, si hace falta, manda una foto. Sinhueco recoge los síntomas, ordena la información según el protocolo de tu clínica y le ofrece el primer hueco libre. Tu equipo revisa los casos.</p>
       </div>
       <div class="step star reveal">
         <span class="when">Cuando alguien cancela</span>
         <h3>Relleno de huecos</h3>
-        <p>Avisa a los pacientes de la lista de espera que encajan con ese hueco, y el primero que dice que sí se queda la cita. Así no pierdes el dinero de un sillón vacío.</p>
+        <p>Avisa por WhatsApp, con un mensaje automático de tu clínica, a los pacientes de la lista de espera que encajan con ese hueco, y el primero que dice que sí se queda la cita. Así no pierdes el dinero de un sillón vacío.</p>
       </div>
       <div class="step reveal">
         <span class="when">Al terminar la consulta</span>
@@ -345,7 +452,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       <div class="step reveal">
         <span class="when">Días 1, 3 y 7 después</span>
         <h3>Seguimiento y reseñas</h3>
-        <p>Pregunta al paciente cómo va la recuperación y te avisa si algo no va bien. Si está contento, le invita a dejarte una reseña en Google.</p>
+        <p>Pregunta al paciente cómo va la recuperación y te avisa si algo no va bien. Además invita a todos los pacientes a dejar su opinión en Google, sin filtrar.</p>
       </div>
     </div>
     <div class="sec-cta reveal">
@@ -368,7 +475,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       <div><span>Precio medio de la cita</span><span>× 70 €</span></div>
       <div><span>Semanas al mes</span><span>× 4</span></div>
       <div class="total"><span>Ingresos en juego / mes</span><span>1.120 €</span></div>
-      <p class="note">Ejemplo ilustrativo: pon tus propios números.</p>
+      <p class="note">Ejemplo ilustrativo: pon tus propios números en la <a href="coste-hueco-agenda-clinica.html">calculadora</a>.</p>
     </div>
   </div>
 </section>
@@ -473,14 +580,45 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   </div>
 </section>
 
+<section id="guias" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Guías</p>
+      <h2>Para clínicas con huecos en la agenda.</h2>
+      <p>Lo que hemos aprendido preparando Sinhueco, con datos y fuentes.</p>
+    </div>
+    <div class="perk-grid">
+      <a class="perk guide reveal" href="reducir-cancelaciones-clinica-dental.html">
+        <span class="num">Agenda</span>
+        <h3>Cómo reducir las cancelaciones de última hora en una clínica dental</h3>
+        <p>Recordatorios, confirmación, política de cancelación y lista de espera: qué dice la evidencia.</p>
+      </a>
+      <a class="perk guide reveal" href="lista-espera-whatsapp-rgpd.html">
+        <span class="num">WhatsApp y RGPD</span>
+        <h3>Lista de espera por WhatsApp: cómo funciona y qué dice el RGPD</h3>
+        <p>Datos de salud, permiso del paciente, API oficial y aviso de asistente automático.</p>
+      </a>
+      <a class="perk guide reveal" href="coste-hueco-agenda-clinica.html">
+        <span class="num">Calculadora</span>
+        <h3>Cuánto cuesta un hueco vacío en la agenda de tu clínica</h3>
+        <p>Pon tus cancelaciones y tu precio medio de cita y mira cuánto se te escapa al mes.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
 <section style="padding-top:0">
   <div class="wrap">
     <div class="sec-head reveal"><p class="eyebrow">Preguntas</p><h2>Lo que nos suelen preguntar.</h2></div>
     <div class="faq">
-      <div class="reveal"><h3>¿Tengo que cambiar de programa de gestión?</h3><p>No. Sinhueco trabaja junto a lo que ya usas. Dinos cuál es en el formulario y priorizaremos esa integración.</p></div>
-      <div class="reveal"><h3>¿Los mensajes salen de mi WhatsApp?</h3><p>Salen del número de tu clínica, con tu tono y tus plantillas. Tú apruebas cómo habla antes de activarlo.</p></div>
-      <div class="reveal"><h3>¿Y los datos de salud?</h3><p>Son datos especialmente protegidos por el RGPD y los tratamos así desde el principio. Las notas clínicas siempre las revisa el profesional antes de guardarlas.</p></div>
+      <div class="reveal"><h3>¿Qué es Sinhueco?</h3><p>Un servicio para clínicas privadas en España que rellena las citas canceladas avisando por WhatsApp a la lista de espera de la clínica. Es lo primero que lanzamos; después vendrán las notas clínicas por voz, el triaje por WhatsApp y el seguimiento de pacientes. Todavía no está abierto: estamos reuniendo a las primeras clínicas.</p></div>
+      <div class="reveal"><h3>¿Cómo funciona el relleno de huecos?</h3><p>Cuando alguien cancela, Sinhueco escribe por WhatsApp a pocos pacientes de la lista de espera que encajan con ese hueco, por orden. El primero que responde que sí se queda la cita y al resto se le dice que sigue en la lista. Así no se ofrece la misma cita a veinte personas a la vez.</p></div>
+      <div class="reveal"><h3>¿Tengo que cambiar de programa de gestión?</h3><p>No. Sinhueco trabaja junto a lo que ya usas. Al principio, recepción marca la cancelación con un mensaje o un botón; después conectaremos con los programas que lo permitan. Dinos cuál usas en el formulario y priorizaremos esa integración.</p></div>
+      <div class="reveal"><h3>¿Los mensajes salen de mi WhatsApp?</h3><p>Salen del número de tu clínica, por la API oficial de WhatsApp Business, con tu tono y tus plantillas. Tú apruebas cómo habla antes de activarlo, y cada mensaje dice desde la primera línea que es un aviso automático de la clínica, para que el paciente sepa que le escribe un asistente.</p></div>
+      <div class="reveal"><h3>¿Y los datos de salud?</h3><p>Son datos especialmente protegidos por el RGPD y los tratamos así desde el principio. Sinhueco actúa como encargado del tratamiento de tu clínica, con contrato, y solo usa los datos necesarios para ofrecer el hueco. Las notas clínicas siempre las revisa el profesional antes de guardarlas.</p></div>
+      <div class="reveal"><h3>¿Qué necesito para empezar?</h3><p>Pacientes que quieran adelantar su cita y que hayan aceptado que la clínica les escriba por WhatsApp para ello. Te damos el texto para pedir ese permiso y te ayudamos a montar la lista.</p></div>
       <div class="reveal"><h3>¿Cuánto costará?</h3><p>Una cuota mensual por clínica. Las clínicas de la lista de espera tendrán precio de fundador, y te lo diremos antes de que pagues nada.</p></div>
+      <div class="reveal"><h3>¿Para qué clínicas es?</h3><p>Clínicas privadas con agenda llena y cancelaciones cada semana: dentales, fisioterapia, medicina estética, podología, psicología y especialidades médicas.</p></div>
     </div>
   </div>
 </section>
