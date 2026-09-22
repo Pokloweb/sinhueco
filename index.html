@@ -1,54 +1,112 @@
 <!doctype html>
-<html lang="es">
+<html lang="es-ES">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Sinhueco</title>
+<title>Sinhueco · Rellena las cancelaciones de tu clínica por WhatsApp</title>
 <meta name="description" content="Sinhueco rellena las cancelaciones de tu clínica por WhatsApp, escribe tus notas clínicas por voz y se ocupa del seguimiento. Únete a la lista de espera.">
+<link rel="canonical" href="https://sinhueco.vercel.app/">
+<link rel="alternate" hreflang="es-ES" href="https://sinhueco.vercel.app/">
+<link rel="alternate" hreflang="x-default" href="https://sinhueco.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sinhueco">
+<meta property="og:locale" content="es_ES">
+<meta property="og:url" content="https://sinhueco.vercel.app/">
+<meta property="og:title" content="Sinhueco · Tu agenda, sin huecos">
+<meta property="og:description" content="Cuando alguien cancela, Sinhueco escribe por WhatsApp a tu lista de espera y rellena la cita en minutos. Para clínicas privadas.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sinhueco · Tu agenda, sin huecos">
+<meta name="twitter:description" content="Cuando alguien cancela, Sinhueco escribe por WhatsApp a tu lista de espera y rellena la cita en minutos. Para clínicas privadas.">
+<meta name="theme-color" content="#F2F5F4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0C1614" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='3' y='3' width='26' height='26' rx='7.5' fill='%23F2F5F4' stroke='%2311211D' stroke-width='3'/%3E%3Crect x='8' y='11' width='16' height='5.5' rx='2' fill='%23FF6A2B'/%3E%3C/svg%3E">
+<script>try{var t=localStorage.getItem("sinhueco-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://sinhueco.vercel.app/#org",
+      "name": "Sinhueco",
+      "url": "https://sinhueco.vercel.app/"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Sinhueco",
+      "url": "https://sinhueco.vercel.app/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "inLanguage": "es-ES",
+      "areaServed": "ES",
+      "description": "Automatizaciones con IA para clínicas privadas: relleno de citas canceladas por WhatsApp con la lista de espera, notas clínicas por voz y seguimiento de pacientes.",
+      "publisher": { "@id": "https://sinhueco.vercel.app/#org" }
+    }
+  ]
+}
+</script>
 <style>
 :root{
   --ground:#F2F5F4; --surface:#FFFFFF; --ink:#11211D; --muted:#566863; --line:#D6DFDC;
   --petrol:#0E4A42; --petrol-soft:#DCEAE6; --hole:#FF6A2B; --hole-soft:#FFE6DA; --fill:#1B9A68; --fill-soft:#D9F2E6;
-  --wa:#E7F8DC;
+  --wa:#E7F8DC; --err:#B8440F;
   --display:"Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
   --body:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono:"JetBrains Mono", ui-monospace, Consolas, monospace;
+  --ease:cubic-bezier(.2,.7,.2,1);
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
     --ground:#0C1614; --surface:#13211E; --ink:#E6EFEC; --muted:#93A8A2; --line:#24372F;
-    --petrol:#7FD1BF; --petrol-soft:#16332D; --hole:#FF8450; --hole-soft:#3A2016; --fill:#45C98F; --fill-soft:#123325; --wa:#1D3326;
+    --petrol:#7FD1BF; --petrol-soft:#16332D; --hole:#FF8450; --hole-soft:#3A2016; --fill:#45C98F; --fill-soft:#123325; --wa:#1D3326; --err:#FF9466;
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
   --ground:#0C1614; --surface:#13211E; --ink:#E6EFEC; --muted:#93A8A2; --line:#24372F;
-  --petrol:#7FD1BF; --petrol-soft:#16332D; --hole:#FF8450; --hole-soft:#3A2016; --fill:#45C98F; --fill-soft:#123325; --wa:#1D3326;
+  --petrol:#7FD1BF; --petrol-soft:#16332D; --hole:#FF8450; --hole-soft:#3A2016; --fill:#45C98F; --fill-soft:#123325; --wa:#1D3326; --err:#FF9466;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--ground);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--ground);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:clip}
 .wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
 a{color:inherit}
 h1,h2,h3{font-family:var(--display);line-height:1.02;margin:0;text-wrap:balance;letter-spacing:-.02em}
 p{margin:0}
 .eyebrow{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+:focus-visible{outline:3px solid var(--hole);outline-offset:3px}
 
 /* nav */
-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--ground) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-.logo{display:flex;align-items:center;gap:10px;font:800 22px/1 var(--display);letter-spacing:-.03em;text-decoration:none}
-.logo-mark{width:26px;height:26px;border-radius:7px;border:2.5px solid var(--ink);position:relative}
-.logo-mark::after{content:"";position:absolute;left:3px;right:3px;top:8px;height:5px;border-radius:2px;background:var(--hole)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 16px/1 var(--body);padding:14px 22px;border-radius:999px;border:0;cursor:pointer;text-decoration:none;background:var(--ink);color:var(--ground);transition:transform .15s ease}
-.btn:hover{transform:translateY(-1px)}
-.btn:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--hole);outline-offset:2px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--ground) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:64px}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.logo{display:flex;align-items:center;gap:10px;font:800 22px/1 var(--display);letter-spacing:-.03em;text-decoration:none;border-radius:8px}
+.logo-mark{width:26px;height:26px;border-radius:7px;border:2.5px solid var(--ink);position:relative;flex:none}
+.logo-mark::after{content:"";position:absolute;left:3px;right:3px;top:8px;height:5px;border-radius:2px;background:var(--hole);transition:background-color .3s ease}
+.logo:hover .logo-mark::after{background:var(--fill)}
+
+/* botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 16px/1 var(--body);padding:14px 22px;border-radius:999px;border:0;cursor:pointer;text-decoration:none;background:var(--ink);color:var(--ground);transition:transform .15s var(--ease),box-shadow .2s ease,opacity .2s ease;-webkit-tap-highlight-color:transparent}
+.btn:hover{transform:translateY(-1px);box-shadow:0 8px 20px -10px color-mix(in srgb,var(--ink) 70%,transparent)}
+.btn:active{transform:translateY(0) scale(.97);box-shadow:none;transition-duration:.06s}
+.btn[disabled]{cursor:progress;opacity:.8;transform:none;box-shadow:none}
 .btn-sm{padding:10px 16px;font-size:14px}
+.btn .short{display:none}
+.icon-btn{width:40px;height:40px;flex:none;display:inline-grid;place-items:center;border-radius:999px;border:1.5px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;transition:border-color .2s ease,background-color .2s ease,transform .15s var(--ease)}
+.icon-btn:hover{border-color:var(--ink);background:var(--surface)}
+.icon-btn:active{transform:scale(.92)}
+.icon-btn svg{width:18px;height:18px}
+.i-sun{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .i-sun{display:block}:root:not([data-theme="light"]) .i-moon{display:none}}
+:root[data-theme="dark"] .i-sun{display:block}
+:root[data-theme="dark"] .i-moon{display:none}
+.spinner{width:16px;height:16px;flex:none;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 
 /* hero */
 .hero{padding-block:64px 72px}
@@ -59,7 +117,8 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 @keyframes strike{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 .lede{font-size:clamp(18px,2vw,21px);color:var(--muted);max-width:34ch;margin-top:24px}
 .lede strong{color:var(--ink);font-weight:600}
-.hero-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:32px}
+.hero-cta,.sec-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:32px}
+.sec-cta{margin-top:40px}
 .hero-note{font-size:14px;color:var(--muted)}
 
 /* agenda demo */
@@ -75,7 +134,6 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .tag{font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:6px 8px;border-radius:6px}
 .slot.hole{background:var(--hole-soft);outline:2px dashed var(--hole);outline-offset:-2px;animation:hole 6s infinite}
 .slot.hole .tag{background:var(--hole);color:#fff}
-.slot.hole .filled-in{display:none}
 @keyframes hole{0%,55%{background:var(--hole-soft);outline-color:var(--hole)}62%,100%{background:var(--fill-soft);outline-color:transparent}}
 .wa{margin-top:14px;display:grid;gap:8px}
 .bubble{max-width:88%;padding:10px 12px;border-radius:12px;font-size:14px;line-height:1.4;background:var(--wa);animation:pop 6s infinite both}
@@ -87,7 +145,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 @keyframes pop2{0%,38%{opacity:.25;transform:translateY(6px)}46%,100%{opacity:1;transform:none}}
 .status-swap{position:relative;display:inline-block}
 .status-swap .a,.status-swap .b{animation:swapA 6s infinite}
-.status-swap .b{position:absolute;right:0;top:0;animation-name:swapB;background:var(--fill)!important}
+.status-swap .b{position:absolute;right:0;top:0;animation-name:swapB;background:var(--fill)!important;color:#fff}
 @keyframes swapA{0%,58%{opacity:1}62%,100%{opacity:0}}
 @keyframes swapB{0%,58%{opacity:0}62%,100%{opacity:1}}
 .name-swap{position:relative;display:block}
@@ -96,6 +154,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 
 /* sections */
 section{padding-block:88px}
+section[id]{scroll-margin-top:64px}
 .sec-head{display:grid;gap:14px;max-width:720px;margin-bottom:48px}
 .sec-head h2{font-size:clamp(34px,4.6vw,54px);font-weight:700}
 .sec-head p{color:var(--muted);font-size:19px}
@@ -110,11 +169,17 @@ section{padding-block:88px}
 .step.star h3::after{content:"Lo primero que lanzamos";display:block;margin-top:10px;font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--fill)}
 
 .band{background:var(--petrol);color:var(--ground)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .band{background:var(--petrol-soft);color:var(--ink)}}
+.band .btn{background:var(--ground);color:var(--ink)}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .band{background:var(--petrol-soft);color:var(--ink)}
+  :root:not([data-theme="light"]) .band .btn{background:var(--ink);color:var(--ground)}
+}
 :root[data-theme="dark"] .band{background:var(--petrol-soft);color:var(--ink)}
+:root[data-theme="dark"] .band .btn{background:var(--ink);color:var(--ground)}
 .band .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
 .band h2{font-size:clamp(32px,4.2vw,50px)}
 .band p{opacity:.85;font-size:18px;margin-top:18px;max-width:44ch}
+.band :focus-visible{outline-color:currentColor}
 .sum{font-family:var(--mono);font-size:15px;border:1px solid color-mix(in srgb,currentColor 25%,transparent);border-radius:16px;padding:22px;display:grid;gap:10px}
 .sum div{display:flex;justify-content:space-between;gap:16px;font-variant-numeric:tabular-nums}
 .sum .total{border-top:1px solid color-mix(in srgb,currentColor 25%,transparent);padding-top:12px;font-weight:500;font-size:17px}
@@ -123,25 +188,45 @@ section{padding-block:88px}
 .who-grid{display:flex;flex-wrap:wrap;gap:12px}
 .chip{font:600 17px/1 var(--body);padding:14px 20px;border-radius:999px;border:1.5px solid var(--ink)}
 
+/* clínicas fundadoras */
+.founders{padding-bottom:0}
+.perk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.perk{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px;display:grid;gap:12px;align-content:start}
+.perk .num{font:500 12px/1 var(--mono);color:var(--fill);letter-spacing:.08em}
+.perk h3{font-size:24px;font-weight:700}
+.perk p{color:var(--muted);font-size:16px}
+
 /* waitlist */
 .wl{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:clamp(24px,5vw,56px);display:grid;grid-template-columns:.9fr 1.1fr;gap:48px}
 .wl h2{font-size:clamp(34px,4.4vw,52px)}
-.wl .perks{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:12px;color:var(--muted)}
-.wl .perks li{display:flex;gap:10px}
-.wl .perks li::before{content:"";flex:none;width:10px;height:10px;margin-top:8px;border-radius:3px;background:var(--fill)}
+.wl .wl-lede{color:var(--muted);margin-top:20px;max-width:36ch}
 form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.field{display:grid;gap:6px}
+.field{display:grid;gap:6px;align-content:start;min-width:0}
 .field.full{grid-column:1/-1}
 label{font-size:14px;font-weight:600}
-input,select{font:400 16px/1.2 var(--body);color:var(--ink);background:var(--ground);border:1.5px solid var(--line);border-radius:12px;padding:13px 14px;width:100%}
+label .opt{font-weight:400;color:var(--muted)}
+input,select{font:400 16px/1.2 var(--body);color:var(--ink);background:var(--ground);border:1.5px solid var(--line);border-radius:12px;padding:13px 14px;width:100%;min-width:0;transition:border-color .2s ease,box-shadow .2s ease}
+input:hover,select:hover{border-color:color-mix(in srgb,var(--petrol) 45%,var(--line))}
 input:focus,select:focus{border-color:var(--petrol)}
+input:focus-visible,select:focus-visible{outline:3px solid var(--hole);outline-offset:2px}
+input[aria-invalid="true"],select[aria-invalid="true"]{border-color:var(--err);box-shadow:0 0 0 3px color-mix(in srgb,var(--err) 14%,transparent)}
+.field-err{font-size:13px;line-height:1.35;color:var(--err);font-weight:500}
+.field-err:empty{display:none}
+.field-err:not(:empty){animation:rise .2s var(--ease)}
 .hp{position:absolute;left:-9999px}
 form .btn{grid-column:1/-1;padding-block:17px;font-size:17px}
 .legal{grid-column:1/-1;font-size:13px;color:var(--muted)}
 .msg{grid-column:1/-1;font-size:15px;font-weight:500}
-.msg.ok{color:var(--fill)} .msg.err{color:var(--hole)}
-.done{display:grid;gap:12px;align-content:center}
+.msg:empty{display:none}
+.msg:not(:empty){animation:rise .25s var(--ease)}
+.msg.ok{color:var(--fill)} .msg.err{color:var(--err)}
+#wl-box{transition:opacity .2s ease,transform .2s ease}
+#wl-box.leaving{opacity:0;transform:translateY(6px)}
+.done{display:grid;gap:12px;align-content:center;height:100%;animation:rise .45s var(--ease)}
 .done h3{font-size:32px}
+.done h3:focus{outline:none}
+.done .tick{width:44px;height:44px;border-radius:12px;background:var(--fill-soft);color:var(--fill);display:grid;place-items:center}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
 .faq{display:grid;grid-template-columns:repeat(2,1fr);gap:32px 48px}
 .faq h3{font:600 19px/1.3 var(--body);letter-spacing:0;margin-bottom:8px}
@@ -150,12 +235,24 @@ form .btn{grid-column:1/-1;padding-block:17px;font-size:17px}
 footer{border-top:1px solid var(--line);padding-block:32px;color:var(--muted);font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
+/* volver arriba */
+.to-top{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:9;width:44px;height:44px;display:grid;place-items:center;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;box-shadow:0 10px 24px -14px rgba(14,74,66,.5);opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .25s ease,transform .25s var(--ease),visibility 0s linear .25s,border-color .2s ease}
+.to-top.show{opacity:1;visibility:visible;transform:none;transition:opacity .25s ease,transform .25s var(--ease),visibility 0s,border-color .2s ease}
+.to-top:hover{border-color:var(--ink)}
+.to-top:active{transform:scale(.92)}
+.to-top svg{width:18px;height:18px}
+
+/* aparición al hacer scroll: solo si el JS ha activado .reveal-on en <html> */
+.reveal-on .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.reveal-on .reveal.in{opacity:1;transform:none}
+
 @media (max-width:900px){
   .hero .wrap,.band .wrap,.wl{grid-template-columns:1fr}
   .journey{grid-template-columns:1fr 1fr}
   .step{border-right:0;border-bottom:1px solid var(--line);padding:24px 16px 24px 0}
   .step:first-child{padding-left:0}
   .step{padding-left:0}
+  .perk-grid{grid-template-columns:1fr}
   .faq{grid-template-columns:1fr}
 }
 @media (max-width:560px){
@@ -163,20 +260,35 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   form{grid-template-columns:1fr}
   section{padding-block:64px}
   .hero{padding-block:40px 56px}
-  nav .btn-sm{display:none}
+  nav .btn .long{display:none}
+  nav .btn .short{display:inline}
+  .logo{font-size:20px}
 }
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  /* la demo se queda en su estado final, sin textos superpuestos */
+  .name-swap .a,.status-swap .a{opacity:0}
+  .slot.hole{background:var(--fill-soft);outline-color:transparent}
+}
+@media print{.reveal-on .reveal{opacity:1;transform:none}.to-top,nav .nav-actions{display:none}}
 </style>
 </head>
 <body>
 
-<nav>
+<nav aria-label="Principal">
   <div class="wrap">
-    <a class="logo" href="#"><span class="logo-mark" aria-hidden="true"></span>sinhueco</a>
-    <a class="btn btn-sm" href="#lista">Unirme a la lista</a>
+    <a class="logo" href="#" aria-label="Sinhueco, ir al inicio"><span class="logo-mark" aria-hidden="true"></span>sinhueco</a>
+    <div class="nav-actions">
+      <button class="icon-btn" type="button" id="theme-btn" aria-label="Cambiar tema claro/oscuro" title="Cambiar tema">
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <a class="btn btn-sm" href="#lista"><span class="long">Unirme a la lista</span><span class="short">Unirme</span></a>
+    </div>
   </div>
 </nav>
 
+<main>
 <header class="hero">
   <div class="wrap">
     <div>
@@ -189,13 +301,13 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       </div>
     </div>
 
-    <div class="agenda" aria-label="Ejemplo: una cancelación rellenada por WhatsApp">
+    <div class="agenda" role="img" aria-label="Ejemplo: una cita de las 9:45 se cancela, Sinhueco avisa por WhatsApp a una paciente de la lista de espera y ella acepta, así que el hueco queda ocupado.">
       <div class="agenda-head"><b>Martes · Gabinete 2</b><span>EJEMPLO</span></div>
       <ul class="slots">
         <li class="slot"><time>09:00</time><div><div class="who">L. Martín</div><div class="what">Revisión + limpieza</div></div><span></span></li>
         <li class="slot hole"><time>09:45</time>
           <div><div class="who name-swap"><span class="a">Cancelada</span><span class="b">P. Serrano</span></div><div class="what">Empaste · 45 min</div></div>
-          <span class="status-swap"><span class="tag a">Hueco</span><span class="tag b" style="color:#fff">Ocupada</span></span>
+          <span class="status-swap"><span class="tag a">Hueco</span><span class="tag b">Ocupada</span></span>
         </li>
         <li class="slot"><time>10:30</time><div><div class="who">A. Ruiz</div><div class="what">Endodoncia</div></div><span></span></li>
       </ul>
@@ -209,44 +321,49 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
 <section id="como">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <p class="eyebrow">Qué hace</p>
       <h2>Se ocupa de todo lo que rodea a la consulta.</h2>
       <p>Tú atiendes al paciente. Sinhueco se encarga del antes, de las cancelaciones y del después, sin que recepción tenga que tocar el teléfono.</p>
     </div>
     <div class="journey">
-      <div class="step">
+      <div class="step reveal">
         <span class="when">Antes de la cita</span>
         <h3>Triaje por WhatsApp</h3>
         <p>El paciente manda una foto o te cuenta qué le pasa. Sinhueco valora la urgencia, le da cita en el gabinete que toca y le explica cómo prepararse.</p>
       </div>
-      <div class="step star">
+      <div class="step star reveal">
         <span class="when">Cuando alguien cancela</span>
         <h3>Relleno de huecos</h3>
         <p>Avisa a los pacientes de la lista de espera que encajan con ese hueco, y el primero que dice que sí se queda la cita. Así no pierdes el dinero de un sillón vacío.</p>
       </div>
-      <div class="step">
+      <div class="step reveal">
         <span class="when">Al terminar la consulta</span>
         <h3>Notas clínicas por voz</h3>
         <p>Dictas un minuto y te devuelve la nota en formato SOAP (subjetivo, objetivo, análisis y plan), lista para revisar y pasar a la historia clínica.</p>
       </div>
-      <div class="step">
+      <div class="step reveal">
         <span class="when">Días 1, 3 y 7 después</span>
         <h3>Seguimiento y reseñas</h3>
         <p>Pregunta al paciente cómo va la recuperación y te avisa si algo no va bien. Si está contento, le invita a dejarte una reseña en Google.</p>
       </div>
+    </div>
+    <div class="sec-cta reveal">
+      <a class="btn" href="#lista">Quiero probarlo en mi clínica</a>
+      <span class="hero-note">Empezamos por el relleno de huecos.</span>
     </div>
   </div>
 </section>
 
 <section class="band">
   <div class="wrap">
-    <div>
+    <div class="reveal">
       <p class="eyebrow" style="color:inherit;opacity:.7">Haz la cuenta de tu clínica</p>
       <h2 style="margin-top:14px">Cada sillón vacío es dinero que no vuelve.</h2>
       <p>Una cancelación con pocas horas de margen casi nunca se recupera llamando uno a uno a los pacientes. Por WhatsApp, y a varios a la vez, sí se recupera.</p>
+      <div class="sec-cta" style="margin-top:28px"><a class="btn" href="#lista">Apuntar mi clínica</a></div>
     </div>
-    <div class="sum" aria-label="Ejemplo de cálculo">
+    <div class="sum reveal" role="group" aria-label="Ejemplo de cálculo">
       <div><span>Cancelaciones de última hora / semana</span><span>4</span></div>
       <div><span>Precio medio de la cita</span><span>× 70 €</span></div>
       <div><span>Semanas al mes</span><span>× 4</span></div>
@@ -258,11 +375,11 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
 <section>
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <p class="eyebrow">Para quién</p>
       <h2>Clínicas privadas con agenda llena y recepción desbordada.</h2>
     </div>
-    <div class="who-grid">
+    <div class="who-grid reveal">
       <span class="chip">Clínicas dentales</span>
       <span class="chip">Fisioterapia</span>
       <span class="chip">Medicina estética</span>
@@ -273,50 +390,77 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   </div>
 </section>
 
+<section class="founders" id="fundadoras">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Programa de clínicas fundadoras</p>
+      <h2>Estamos empezando. Las primeras clínicas lo tienen mejor.</h2>
+      <p>Sinhueco todavía no está abierto. Las clínicas que entren primero lo estrenan con estas condiciones.</p>
+    </div>
+    <div class="perk-grid">
+      <div class="perk reveal">
+        <span class="num">01</span>
+        <h3>Te lo configuramos nosotros</h3>
+        <p>Con tu agenda y tu forma de trabajar. Tú apruebas cómo habla por WhatsApp antes de activarlo.</p>
+      </div>
+      <div class="perk reveal">
+        <span class="num">02</span>
+        <h3>Precio de fundador para siempre</h3>
+        <p>Una cuota mensual por clínica, con precio de fundador. Te lo diremos antes de que pagues nada.</p>
+      </div>
+      <div class="perk reveal">
+        <span class="num">03</span>
+        <h3>Tú decides qué construimos después</h3>
+        <p>Prioridad en las integraciones con tu programa de gestión y en lo que venga detrás.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="lista">
   <div class="wrap">
-    <div class="wl">
+    <div class="wl reveal">
       <div>
         <p class="eyebrow">Lista de espera</p>
         <h2 style="margin-top:14px">Sé de las primeras clínicas en usarlo.</h2>
-        <ul class="perks">
-          <li>Precio de fundador para siempre para las primeras clínicas.</li>
-          <li>Te lo configuramos nosotros, con tu agenda y tu forma de trabajar.</li>
-          <li>Tú decides qué construimos después: prioridad en integraciones con tu software.</li>
-        </ul>
+        <p class="wl-lede">Plazas limitadas para las primeras clínicas. Déjanos tus datos y te escribiremos antes de abrir las plazas.</p>
       </div>
 
       <div id="wl-box">
         <form id="wl-form" novalidate>
           <div class="field full">
             <label for="email">Email de trabajo</label>
-            <input id="email" name="email" type="email" autocomplete="email" required placeholder="direccion@tuclinica.es">
+            <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required aria-describedby="email-err" placeholder="direccion@tuclinica.es">
+            <p class="field-err" id="email-err"></p>
           </div>
           <div class="field">
             <label for="nombre">Tu nombre</label>
-            <input id="nombre" name="nombre" autocomplete="name" required placeholder="Dra. Laura Gómez">
+            <input id="nombre" name="nombre" autocomplete="name" required aria-describedby="nombre-err" placeholder="Dra. Laura Gómez">
+            <p class="field-err" id="nombre-err"></p>
           </div>
           <div class="field">
             <label for="clinica">Clínica</label>
-            <input id="clinica" name="clinica" autocomplete="organization" required placeholder="Clínica Dental Sonrisa">
+            <input id="clinica" name="clinica" autocomplete="organization" required aria-describedby="clinica-err" placeholder="Clínica Dental Sonrisa">
+            <p class="field-err" id="clinica-err"></p>
           </div>
           <div class="field">
             <label for="tipo">Especialidad</label>
-            <select id="tipo" name="tipo" required>
+            <select id="tipo" name="tipo" required aria-describedby="tipo-err">
               <option value="">Elige una</option>
               <option>Dental</option><option>Fisioterapia</option><option>Medicina estética</option>
               <option>Podología</option><option>Psicología</option><option>Otra especialidad</option>
             </select>
+            <p class="field-err" id="tipo-err"></p>
           </div>
           <div class="field">
-            <label for="profesionales">Profesionales</label>
+            <label for="profesionales">Profesionales <span class="opt">(opcional)</span></label>
             <select id="profesionales" name="profesionales">
               <option value="">¿Cuántos sois?</option>
               <option>1</option><option>2–4</option><option>5–10</option><option>Más de 10</option>
             </select>
           </div>
           <div class="field full">
-            <label for="software">¿Qué programa de gestión usáis?</label>
+            <label for="software">¿Qué programa de gestión usáis? <span class="opt">(opcional)</span></label>
             <input id="software" name="software" placeholder="Gesden, ClinicCloud, Doctoralia, papel...">
           </div>
           <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -331,15 +475,16 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="sec-head"><p class="eyebrow">Preguntas</p><h2>Lo que nos suelen preguntar.</h2></div>
+    <div class="sec-head reveal"><p class="eyebrow">Preguntas</p><h2>Lo que nos suelen preguntar.</h2></div>
     <div class="faq">
-      <div><h3>¿Tengo que cambiar de programa de gestión?</h3><p>No. Sinhueco trabaja junto a lo que ya usas. Dinos cuál es en el formulario y priorizaremos esa integración.</p></div>
-      <div><h3>¿Los mensajes salen de mi WhatsApp?</h3><p>Salen del número de tu clínica, con tu tono y tus plantillas. Tú apruebas cómo habla antes de activarlo.</p></div>
-      <div><h3>¿Y los datos de salud?</h3><p>Son datos especialmente protegidos por el RGPD y los tratamos así desde el principio. Las notas clínicas siempre las revisa el profesional antes de guardarlas.</p></div>
-      <div><h3>¿Cuánto costará?</h3><p>Una cuota mensual por clínica. Las clínicas de la lista de espera tendrán precio de fundador, y te lo diremos antes de que pagues nada.</p></div>
+      <div class="reveal"><h3>¿Tengo que cambiar de programa de gestión?</h3><p>No. Sinhueco trabaja junto a lo que ya usas. Dinos cuál es en el formulario y priorizaremos esa integración.</p></div>
+      <div class="reveal"><h3>¿Los mensajes salen de mi WhatsApp?</h3><p>Salen del número de tu clínica, con tu tono y tus plantillas. Tú apruebas cómo habla antes de activarlo.</p></div>
+      <div class="reveal"><h3>¿Y los datos de salud?</h3><p>Son datos especialmente protegidos por el RGPD y los tratamos así desde el principio. Las notas clínicas siempre las revisa el profesional antes de guardarlas.</p></div>
+      <div class="reveal"><h3>¿Cuánto costará?</h3><p>Una cuota mensual por clínica. Las clínicas de la lista de espera tendrán precio de fundador, y te lo diremos antes de que pagues nada.</p></div>
     </div>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="wrap">
@@ -348,38 +493,159 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   </div>
 </footer>
 
+<button class="to-top" type="button" id="to-top" aria-label="Volver arriba">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
 <script>
+/* Tema claro/oscuro */
+(function(){
+  var root = document.documentElement, btn = document.getElementById("theme-btn");
+  var metas = document.querySelectorAll('meta[name="theme-color"]');
+  var mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+  function current(){ return root.getAttribute("data-theme") || (mq && mq.matches ? "dark" : "light"); }
+  function sync(){
+    var t = current();
+    btn.setAttribute("aria-label", t === "dark" ? "Cambiar a modo claro" : "Cambiar a modo oscuro");
+    btn.setAttribute("title", btn.getAttribute("aria-label"));
+    if (root.getAttribute("data-theme")) for (var i = 0; i < metas.length; i++) metas[i].setAttribute("content", t === "dark" ? "#0C1614" : "#F2F5F4");
+  }
+  btn.addEventListener("click", function(){
+    var next = current() === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("sinhueco-theme", next); } catch(e){}
+    sync();
+  });
+  if (mq && mq.addEventListener) mq.addEventListener("change", sync);
+  sync();
+})();
+
+/* Aparición al hacer scroll: el contenido solo se oculta si todo esto funciona */
+(function(){
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce || !("IntersectionObserver" in window)) return;
+  var root = document.documentElement;
+  var els = [].slice.call(document.querySelectorAll(".reveal"));
+  var vh = window.innerHeight || 800;
+  els.forEach(function(el){
+    var sibs = el.parentNode.querySelectorAll(":scope > .reveal");
+    var i = [].indexOf.call(sibs, el);
+    if (i > 0) el.style.transitionDelay = Math.min(i, 4) * 80 + "ms";
+    if (el.getBoundingClientRect().top < vh) el.classList.add("in");
+  });
+  var fired = false;
+  var io = new IntersectionObserver(function(entries){
+    fired = true;
+    entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, {rootMargin: "0px 0px -8% 0px", threshold: 0.08});
+  root.classList.add("reveal-on");
+  els.forEach(function(el){ if (!el.classList.contains("in")) io.observe(el); });
+  // Red de seguridad: si el observer no responde, se muestra todo.
+  setTimeout(function(){ if (!fired) root.classList.remove("reveal-on"); }, 1500);
+})();
+
+/* Volver arriba */
+(function(){
+  var b = document.getElementById("to-top"), ticking = false;
+  function upd(){ b.classList.toggle("show", window.scrollY > 700); ticking = false; }
+  window.addEventListener("scroll", function(){ if (!ticking){ ticking = true; requestAnimationFrame(upd); } }, {passive: true});
+  b.addEventListener("click", function(){
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({top: 0, behavior: reduce ? "auto" : "smooth"});
+    document.querySelector(".logo").focus({preventScroll: true});
+  });
+  upd();
+})();
+
+/* Lista de espera */
 (function(){
   var ENDPOINT = "https://formsubmit.co/ajax/2f994d750785f5c77caaa0eea46c1f6a";
   var form = document.getElementById("wl-form");
   var msg = document.getElementById("wl-msg");
   var btn = document.getElementById("wl-btn");
+  var BTN_TEXT = btn.textContent;
+
+  var rules = {
+    email: function(v){
+      if (!v) return "Escribe tu email de trabajo.";
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) return "Revisa el email: parece que le falta algo (ej. nombre@clinica.es).";
+      return "";
+    },
+    nombre: function(v){ return v ? "" : "Dinos tu nombre."; },
+    clinica: function(v){ return v ? "" : "Escribe el nombre de la clínica."; },
+    tipo: function(v){ return v ? "" : "Elige una especialidad."; }
+  };
+
+  function check(name){
+    var el = form.elements[name], err = document.getElementById(name + "-err");
+    var text = rules[name](el.value.trim());
+    err.textContent = text;
+    if (text) el.setAttribute("aria-invalid", "true"); else el.removeAttribute("aria-invalid");
+    return !text;
+  }
+
+  Object.keys(rules).forEach(function(name){
+    var el = form.elements[name];
+    // Revalida en vivo solo los campos ya marcados; al salir, solo si hay algo escrito.
+    el.addEventListener(el.tagName === "SELECT" ? "change" : "input", function(){ if (el.getAttribute("aria-invalid")) check(name); });
+    el.addEventListener("blur", function(){ if (el.value.trim()) check(name); });
+  });
+
+  function setLoading(on){
+    btn.disabled = on;
+    btn.setAttribute("aria-busy", on ? "true" : "false");
+    btn.innerHTML = on ? '<span class="spinner" aria-hidden="true"></span>Enviando…' : BTN_TEXT;
+  }
+
   form.addEventListener("submit", function(e){
     e.preventDefault();
     msg.className = "msg"; msg.textContent = "";
-    var email = form.email.value.trim();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.className="msg err"; msg.textContent="Revisa el email: parece que le falta algo."; form.email.focus(); return; }
-    if (!form.nombre.value.trim() || !form.clinica.value.trim() || !form.tipo.value) { msg.className="msg err"; msg.textContent="Rellena tu nombre, la clínica y la especialidad."; return; }
+    var firstBad = null;
+    Object.keys(rules).forEach(function(name){ if (!check(name) && !firstBad) firstBad = form.elements[name]; });
+    if (firstBad){
+      msg.className = "msg err"; msg.textContent = "Revisa los campos marcados.";
+      firstBad.focus();
+      return;
+    }
     if (form._honey.value) return;
-    btn.disabled = true; btn.textContent = "Enviando…";
+
+    var email = form.email.value.trim();
     var data = {
       email: email, nombre: form.nombre.value.trim(), clinica: form.clinica.value.trim(),
       tipo: form.tipo.value, profesionales: form.profesionales.value, software: form.software.value.trim(),
       _subject: "Sinhueco · nueva clínica en la lista: " + form.clinica.value.trim(),
       _template: "table", _captcha: "false"
     };
-    fetch(ENDPOINT, {method:"POST", headers:{"Content-Type":"application/json","Accept":"application/json"}, body: JSON.stringify(data)})
-      .then(function(r){ return r.json().then(function(j){ if(!r.ok || j.success === "false" || j.success === false) throw new Error(j.message||"error"); }); })
-      .then(function(){
-        document.getElementById("wl-box").innerHTML =
-          '<div class="done"><p class="eyebrow">Estás dentro</p><h3>Gracias, ' + escapeHtml(data.nombre.split(" ")[0]) + '.</h3>' +
-          '<p style="color:var(--muted)">Hemos apuntado a ' + escapeHtml(data.clinica) + '. Te escribiremos a ' + escapeHtml(email) + ' antes de abrir las plazas.</p></div>';
-      })
-      .catch(function(){
-        btn.disabled = false; btn.textContent = "Apuntarme a la lista";
-        msg.className = "msg err"; msg.textContent = "No se ha podido enviar. Vuelve a intentarlo en un momento.";
+    setLoading(true);
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var timer = ctrl ? setTimeout(function(){ ctrl.abort(); }, 15000) : null;
+
+    fetch(ENDPOINT, {method:"POST", headers:{"Content-Type":"application/json","Accept":"application/json"}, body: JSON.stringify(data), signal: ctrl ? ctrl.signal : undefined})
+      .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ if(!r.ok || j.success === "false" || j.success === false) throw new Error("server"); }); })
+      .then(function(){ clearTimeout(timer); showDone(data); })
+      .catch(function(err){
+        clearTimeout(timer);
+        setLoading(false);
+        msg.className = "msg err";
+        if (navigator.onLine === false) msg.textContent = "Parece que no tienes conexión. Comprueba tu internet y vuelve a pulsar el botón; tus datos siguen aquí.";
+        else if (err && err.name === "AbortError") msg.textContent = "El envío está tardando demasiado. Vuelve a intentarlo en un momento; tus datos siguen aquí.";
+        else msg.textContent = "No hemos podido guardar tus datos por un problema en el envío. Vuelve a intentarlo en un momento.";
       });
   });
+
+  function showDone(data){
+    var box = document.getElementById("wl-box");
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    box.classList.add("leaving");
+    setTimeout(function(){
+      box.innerHTML =
+        '<div class="done"><span class="tick" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>' +
+        '<p class="eyebrow">Estás dentro</p><h3 tabindex="-1">Gracias, ' + escapeHtml(data.nombre.split(" ")[0]) + '.</h3>' +
+        '<p style="color:var(--muted)">Hemos apuntado a ' + escapeHtml(data.clinica) + '. Te escribiremos a ' + escapeHtml(data.email) + ' antes de abrir las plazas.</p></div>';
+      box.classList.remove("leaving");
+      box.querySelector("h3").focus();
+    }, reduce ? 0 : 200);
+  }
   function escapeHtml(s){ return s.replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
 })();
 </script>

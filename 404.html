@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es-ES">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Página no encontrada · Sinhueco</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F2F5F4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0C1614" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='3' y='3' width='26' height='26' rx='7.5' fill='%23F2F5F4' stroke='%2311211D' stroke-width='3'/%3E%3Crect x='8' y='11' width='16' height='5.5' rx='2' fill='%23FF6A2B'/%3E%3C/svg%3E">
+<script>try{var t=localStorage.getItem("sinhueco-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Figtree:wght@400;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{
+  --ground:#F2F5F4; --surface:#FFFFFF; --ink:#11211D; --muted:#566863; --line:#D6DFDC;
+  --hole:#FF6A2B; --hole-soft:#FFE6DA;
+  --display:"Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
+  --body:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Consolas, monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0C1614; --surface:#13211E; --ink:#E6EFEC; --muted:#93A8A2; --line:#24372F; --hole:#FF8450; --hole-soft:#3A2016;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0C1614; --surface:#13211E; --ink:#E6EFEC; --muted:#93A8A2; --line:#24372F; --hole:#FF8450; --hole-soft:#3A2016;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;min-height:100dvh;display:grid;grid-template-rows:auto 1fr;background:var(--ground);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;width:100%;margin:0 auto;padding-inline:20px}
+:focus-visible{outline:3px solid var(--hole);outline-offset:3px}
+nav{border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font:800 22px/1 var(--display);letter-spacing:-.03em;text-decoration:none;color:inherit;border-radius:8px}
+.logo-mark{width:26px;height:26px;border-radius:7px;border:2.5px solid var(--ink);position:relative}
+.logo-mark::after{content:"";position:absolute;left:3px;right:3px;top:8px;height:5px;border-radius:2px;background:var(--hole)}
+main{display:grid;align-content:center;padding-block:64px}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+h1{font:800 clamp(44px,8vw,88px)/1.02 var(--display);letter-spacing:-.02em;margin:18px 0 0;text-wrap:balance}
+.gap{display:inline-block;min-width:2.2em;border-radius:.2em;background:var(--hole-soft);outline:.06em dashed var(--hole);outline-offset:-.06em;color:transparent}
+p.lede{color:var(--muted);font-size:clamp(18px,2vw,21px);max-width:38ch;margin:24px 0 0}
+.btn{display:inline-flex;align-items:center;gap:8px;margin-top:32px;font:600 16px/1 var(--body);padding:14px 22px;border-radius:999px;text-decoration:none;background:var(--ink);color:var(--ground);transition:transform .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn:active{transform:scale(.97)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<nav aria-label="Principal">
+  <div class="wrap"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true"></span>sinhueco</a></div>
+</nav>
+<main>
+  <div class="wrap">
+    <p class="eyebrow">Error 404</p>
+    <h1>Aquí hay un <span class="gap" aria-hidden="true">__</span> hueco.</h1>
+    <p class="lede">La página que buscas no existe o ha cambiado de sitio. Esta no la podemos rellenar, pero la portada sí está.</p>
+    <a class="btn" href="/">Volver a la portada</a>
+  </div>
+</main>
+</body>
+</html>
