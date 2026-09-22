@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sinhueco</title>
+<meta name="description" content="Sinhueco rellena las cancelaciones de tu clínica por WhatsApp, escribe tus notas clínicas por voz y se ocupa del seguimiento. Únete a la lista de espera.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{
+  --ground:#F2F5F4; --surface:#FFFFFF; --ink:#11211D; --muted:#566863; --line:#D6DFDC;
+  --petrol:#0E4A42; --petrol-soft:#DCEAE6; --hole:#FF6A2B; --hole-soft:#FFE6DA; --fill:#1B9A68; --fill-soft:#D9F2E6;
+  --wa:#E7F8DC;
+  --display:"Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
+  --body:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Consolas, monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0C1614; --surface:#13211E; --ink:#E6EFEC; --muted:#93A8A2; --line:#24372F;
+    --petrol:#7FD1BF; --petrol-soft:#16332D; --hole:#FF8450; --hole-soft:#3A2016; --fill:#45C98F; --fill-soft:#123325; --wa:#1D3326;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0C1614; --surface:#13211E; --ink:#E6EFEC; --muted:#93A8A2; --line:#24372F;
+  --petrol:#7FD1BF; --petrol-soft:#16332D; --hole:#FF8450; --hole-soft:#3A2016; --fill:#45C98F; --fill-soft:#123325; --wa:#1D3326;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);line-height:1.02;margin:0;text-wrap:balance;letter-spacing:-.02em}
+p{margin:0}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* nav */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--ground) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font:800 22px/1 var(--display);letter-spacing:-.03em;text-decoration:none}
+.logo-mark{width:26px;height:26px;border-radius:7px;border:2.5px solid var(--ink);position:relative}
+.logo-mark::after{content:"";position:absolute;left:3px;right:3px;top:8px;height:5px;border-radius:2px;background:var(--hole)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 16px/1 var(--body);padding:14px 22px;border-radius:999px;border:0;cursor:pointer;text-decoration:none;background:var(--ink);color:var(--ground);transition:transform .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--hole);outline-offset:2px}
+.btn-sm{padding:10px 16px;font-size:14px}
+
+/* hero */
+.hero{padding-block:64px 72px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(46px,7.4vw,92px);font-weight:800}
+.hero h1 .strike{position:relative;color:var(--muted);white-space:nowrap}
+.hero h1 .strike::after{content:"";position:absolute;left:-2%;right:-2%;top:54%;height:.11em;background:var(--hole);border-radius:4px;transform-origin:left;animation:strike .6s .5s ease-out both}
+@keyframes strike{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.lede{font-size:clamp(18px,2vw,21px);color:var(--muted);max-width:34ch;margin-top:24px}
+.lede strong{color:var(--ink);font-weight:600}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:32px}
+.hero-note{font-size:14px;color:var(--muted)}
+
+/* agenda demo */
+.agenda{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 24px 60px -30px rgba(14,74,66,.35)}
+.agenda-head{display:flex;justify-content:space-between;align-items:baseline;padding:4px 6px 14px;border-bottom:1px solid var(--line)}
+.agenda-head b{font:700 18px/1 var(--display)}
+.agenda-head span{font:500 12px/1 var(--mono);color:var(--muted)}
+.slots{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:8px}
+.slot{display:grid;grid-template-columns:52px 1fr auto;gap:12px;align-items:center;padding:12px 14px;border-radius:12px;background:var(--petrol-soft)}
+.slot time{font:500 13px/1 var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.slot .who{font-weight:600;font-size:15px}
+.slot .what{font-size:13px;color:var(--muted)}
+.tag{font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:6px 8px;border-radius:6px}
+.slot.hole{background:var(--hole-soft);outline:2px dashed var(--hole);outline-offset:-2px;animation:hole 6s infinite}
+.slot.hole .tag{background:var(--hole);color:#fff}
+.slot.hole .filled-in{display:none}
+@keyframes hole{0%,55%{background:var(--hole-soft);outline-color:var(--hole)}62%,100%{background:var(--fill-soft);outline-color:transparent}}
+.wa{margin-top:14px;display:grid;gap:8px}
+.bubble{max-width:88%;padding:10px 12px;border-radius:12px;font-size:14px;line-height:1.4;background:var(--wa);animation:pop 6s infinite both}
+.bubble small{display:block;font:500 11px/1 var(--mono);color:var(--muted);margin-top:6px;text-align:right}
+.bubble.them{justify-self:end;background:var(--surface);border:1px solid var(--line)}
+.bubble:nth-child(1){animation-name:pop1}
+.bubble:nth-child(2){animation-name:pop2}
+@keyframes pop1{0%,12%{opacity:.25;transform:translateY(6px)}20%,100%{opacity:1;transform:none}}
+@keyframes pop2{0%,38%{opacity:.25;transform:translateY(6px)}46%,100%{opacity:1;transform:none}}
+.status-swap{position:relative;display:inline-block}
+.status-swap .a,.status-swap .b{animation:swapA 6s infinite}
+.status-swap .b{position:absolute;right:0;top:0;animation-name:swapB;background:var(--fill)!important}
+@keyframes swapA{0%,58%{opacity:1}62%,100%{opacity:0}}
+@keyframes swapB{0%,58%{opacity:0}62%,100%{opacity:1}}
+.name-swap{position:relative;display:block}
+.name-swap .a,.name-swap .b{animation:swapA 6s infinite}
+.name-swap .b{position:absolute;left:0;top:0;animation-name:swapB}
+
+/* sections */
+section{padding-block:88px}
+.sec-head{display:grid;gap:14px;max-width:720px;margin-bottom:48px}
+.sec-head h2{font-size:clamp(34px,4.6vw,54px);font-weight:700}
+.sec-head p{color:var(--muted);font-size:19px}
+
+.journey{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:2px solid var(--ink)}
+.step{padding:24px 24px 8px 0;display:grid;gap:12px;align-content:start;border-right:1px solid var(--line);padding-left:20px}
+.step:first-child{padding-left:0}
+.step:last-child{border-right:0}
+.step .when{font:500 12px/1.3 var(--mono);color:var(--hole);letter-spacing:.04em}
+.step h3{font-size:24px;font-weight:700}
+.step p{color:var(--muted);font-size:16px}
+.step.star h3::after{content:"Lo primero que lanzamos";display:block;margin-top:10px;font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--fill)}
+
+.band{background:var(--petrol);color:var(--ground)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .band{background:var(--petrol-soft);color:var(--ink)}}
+:root[data-theme="dark"] .band{background:var(--petrol-soft);color:var(--ink)}
+.band .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.band h2{font-size:clamp(32px,4.2vw,50px)}
+.band p{opacity:.85;font-size:18px;margin-top:18px;max-width:44ch}
+.sum{font-family:var(--mono);font-size:15px;border:1px solid color-mix(in srgb,currentColor 25%,transparent);border-radius:16px;padding:22px;display:grid;gap:10px}
+.sum div{display:flex;justify-content:space-between;gap:16px;font-variant-numeric:tabular-nums}
+.sum .total{border-top:1px solid color-mix(in srgb,currentColor 25%,transparent);padding-top:12px;font-weight:500;font-size:17px}
+.sum .note{font-family:var(--body);font-size:13px;opacity:.7}
+
+.who-grid{display:flex;flex-wrap:wrap;gap:12px}
+.chip{font:600 17px/1 var(--body);padding:14px 20px;border-radius:999px;border:1.5px solid var(--ink)}
+
+/* waitlist */
+.wl{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:clamp(24px,5vw,56px);display:grid;grid-template-columns:.9fr 1.1fr;gap:48px}
+.wl h2{font-size:clamp(34px,4.4vw,52px)}
+.wl .perks{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:12px;color:var(--muted)}
+.wl .perks li{display:flex;gap:10px}
+.wl .perks li::before{content:"";flex:none;width:10px;height:10px;margin-top:8px;border-radius:3px;background:var(--fill)}
+form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:grid;gap:6px}
+.field.full{grid-column:1/-1}
+label{font-size:14px;font-weight:600}
+input,select{font:400 16px/1.2 var(--body);color:var(--ink);background:var(--ground);border:1.5px solid var(--line);border-radius:12px;padding:13px 14px;width:100%}
+input:focus,select:focus{border-color:var(--petrol)}
+.hp{position:absolute;left:-9999px}
+form .btn{grid-column:1/-1;padding-block:17px;font-size:17px}
+.legal{grid-column:1/-1;font-size:13px;color:var(--muted)}
+.msg{grid-column:1/-1;font-size:15px;font-weight:500}
+.msg.ok{color:var(--fill)} .msg.err{color:var(--hole)}
+.done{display:grid;gap:12px;align-content:center}
+.done h3{font-size:32px}
+
+.faq{display:grid;grid-template-columns:repeat(2,1fr);gap:32px 48px}
+.faq h3{font:600 19px/1.3 var(--body);letter-spacing:0;margin-bottom:8px}
+.faq p{color:var(--muted);font-size:16px}
+
+footer{border-top:1px solid var(--line);padding-block:32px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+@media (max-width:900px){
+  .hero .wrap,.band .wrap,.wl{grid-template-columns:1fr}
+  .journey{grid-template-columns:1fr 1fr}
+  .step{border-right:0;border-bottom:1px solid var(--line);padding:24px 16px 24px 0}
+  .step:first-child{padding-left:0}
+  .step{padding-left:0}
+  .faq{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .journey{grid-template-columns:1fr}
+  form{grid-template-columns:1fr}
+  section{padding-block:64px}
+  .hero{padding-block:40px 56px}
+  nav .btn-sm{display:none}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#"><span class="logo-mark" aria-hidden="true"></span>sinhueco</a>
+    <a class="btn btn-sm" href="#lista">Unirme a la lista</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Para clínicas dentales, de fisio, estética y especialidades</p>
+      <h1 style="margin-top:18px">Tu agenda, <span class="strike">con huecos</span> sin huecos.</h1>
+      <p class="lede">Cuando alguien cancela, Sinhueco escribe por WhatsApp a tu lista de espera y <strong>rellena la cita en minutos</strong>. Y al acabar la consulta, dictas y la nota clínica se escribe sola.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#lista">Quiero acceso anticipado</a>
+        <span class="hero-note">Plazas limitadas para las primeras clínicas.</span>
+      </div>
+    </div>
+
+    <div class="agenda" aria-label="Ejemplo: una cancelación rellenada por WhatsApp">
+      <div class="agenda-head"><b>Martes · Gabinete 2</b><span>EJEMPLO</span></div>
+      <ul class="slots">
+        <li class="slot"><time>09:00</time><div><div class="who">L. Martín</div><div class="what">Revisión + limpieza</div></div><span></span></li>
+        <li class="slot hole"><time>09:45</time>
+          <div><div class="who name-swap"><span class="a">Cancelada</span><span class="b">P. Serrano</span></div><div class="what">Empaste · 45 min</div></div>
+          <span class="status-swap"><span class="tag a">Hueco</span><span class="tag b" style="color:#fff">Ocupada</span></span>
+        </li>
+        <li class="slot"><time>10:30</time><div><div class="who">A. Ruiz</div><div class="what">Endodoncia</div></div><span></span></li>
+      </ul>
+      <div class="wa">
+        <div class="bubble">Hola Paula, se ha liberado una cita hoy a las 9:45 para tu empaste. ¿Te la reservo?<small>09:12</small></div>
+        <div class="bubble them">¡Sí, perfecto! Voy para allá<small>09:14</small></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="como">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Qué hace</p>
+      <h2>Se ocupa de todo lo que rodea a la consulta.</h2>
+      <p>Tú atiendes al paciente. Sinhueco se encarga del antes, de las cancelaciones y del después, sin que recepción tenga que tocar el teléfono.</p>
+    </div>
+    <div class="journey">
+      <div class="step">
+        <span class="when">Antes de la cita</span>
+        <h3>Triaje por WhatsApp</h3>
+        <p>El paciente manda una foto o te cuenta qué le pasa. Sinhueco valora la urgencia, le da cita en el gabinete que toca y le explica cómo prepararse.</p>
+      </div>
+      <div class="step star">
+        <span class="when">Cuando alguien cancela</span>
+        <h3>Relleno de huecos</h3>
+        <p>Avisa a los pacientes de la lista de espera que encajan con ese hueco, y el primero que dice que sí se queda la cita. Así no pierdes el dinero de un sillón vacío.</p>
+      </div>
+      <div class="step">
+        <span class="when">Al terminar la consulta</span>
+        <h3>Notas clínicas por voz</h3>
+        <p>Dictas un minuto y te devuelve la nota en formato SOAP (subjetivo, objetivo, análisis y plan), lista para revisar y pasar a la historia clínica.</p>
+      </div>
+      <div class="step">
+        <span class="when">Días 1, 3 y 7 después</span>
+        <h3>Seguimiento y reseñas</h3>
+        <p>Pregunta al paciente cómo va la recuperación y te avisa si algo no va bien. Si está contento, le invita a dejarte una reseña en Google.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow" style="color:inherit;opacity:.7">Haz la cuenta de tu clínica</p>
+      <h2 style="margin-top:14px">Cada sillón vacío es dinero que no vuelve.</h2>
+      <p>Una cancelación con pocas horas de margen casi nunca se recupera llamando uno a uno a los pacientes. Por WhatsApp, y a varios a la vez, sí se recupera.</p>
+    </div>
+    <div class="sum" aria-label="Ejemplo de cálculo">
+      <div><span>Cancelaciones de última hora / semana</span><span>4</span></div>
+      <div><span>Precio medio de la cita</span><span>× 70 €</span></div>
+      <div><span>Semanas al mes</span><span>× 4</span></div>
+      <div class="total"><span>Ingresos en juego / mes</span><span>1.120 €</span></div>
+      <p class="note">Ejemplo ilustrativo: pon tus propios números.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Para quién</p>
+      <h2>Clínicas privadas con agenda llena y recepción desbordada.</h2>
+    </div>
+    <div class="who-grid">
+      <span class="chip">Clínicas dentales</span>
+      <span class="chip">Fisioterapia</span>
+      <span class="chip">Medicina estética</span>
+      <span class="chip">Podología</span>
+      <span class="chip">Psicología</span>
+      <span class="chip">Especialidades médicas</span>
+    </div>
+  </div>
+</section>
+
+<section id="lista">
+  <div class="wrap">
+    <div class="wl">
+      <div>
+        <p class="eyebrow">Lista de espera</p>
+        <h2 style="margin-top:14px">Sé de las primeras clínicas en usarlo.</h2>
+        <ul class="perks">
+          <li>Precio de fundador para siempre para las primeras clínicas.</li>
+          <li>Te lo configuramos nosotros, con tu agenda y tu forma de trabajar.</li>
+          <li>Tú decides qué construimos después: prioridad en integraciones con tu software.</li>
+        </ul>
+      </div>
+
+      <div id="wl-box">
+        <form id="wl-form" novalidate>
+          <div class="field full">
+            <label for="email">Email de trabajo</label>
+            <input id="email" name="email" type="email" autocomplete="email" required placeholder="direccion@tuclinica.es">
+          </div>
+          <div class="field">
+            <label for="nombre">Tu nombre</label>
+            <input id="nombre" name="nombre" autocomplete="name" required placeholder="Dra. Laura Gómez">
+          </div>
+          <div class="field">
+            <label for="clinica">Clínica</label>
+            <input id="clinica" name="clinica" autocomplete="organization" required placeholder="Clínica Dental Sonrisa">
+          </div>
+          <div class="field">
+            <label for="tipo">Especialidad</label>
+            <select id="tipo" name="tipo" required>
+              <option value="">Elige una</option>
+              <option>Dental</option><option>Fisioterapia</option><option>Medicina estética</option>
+              <option>Podología</option><option>Psicología</option><option>Otra especialidad</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="profesionales">Profesionales</label>
+            <select id="profesionales" name="profesionales">
+              <option value="">¿Cuántos sois?</option>
+              <option>1</option><option>2–4</option><option>5–10</option><option>Más de 10</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="software">¿Qué programa de gestión usáis?</label>
+            <input id="software" name="software" placeholder="Gesden, ClinicCloud, Doctoralia, papel...">
+          </div>
+          <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn" type="submit" id="wl-btn">Apuntarme a la lista</button>
+          <p class="msg" id="wl-msg" role="status" aria-live="polite"></p>
+          <p class="legal">Solo usaremos estos datos para contactarte sobre Sinhueco. Puedes pedir que los borremos cuando quieras.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Preguntas</p><h2>Lo que nos suelen preguntar.</h2></div>
+    <div class="faq">
+      <div><h3>¿Tengo que cambiar de programa de gestión?</h3><p>No. Sinhueco trabaja junto a lo que ya usas. Dinos cuál es en el formulario y priorizaremos esa integración.</p></div>
+      <div><h3>¿Los mensajes salen de mi WhatsApp?</h3><p>Salen del número de tu clínica, con tu tono y tus plantillas. Tú apruebas cómo habla antes de activarlo.</p></div>
+      <div><h3>¿Y los datos de salud?</h3><p>Son datos especialmente protegidos por el RGPD y los tratamos así desde el principio. Las notas clínicas siempre las revisa el profesional antes de guardarlas.</p></div>
+      <div><h3>¿Cuánto costará?</h3><p>Una cuota mensual por clínica. Las clínicas de la lista de espera tendrán precio de fundador, y te lo diremos antes de que pagues nada.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Sinhueco</span>
+    <span>Hecho en Madrid</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var ENDPOINT = "https://formsubmit.co/ajax/diegoarchilla@gmail.com";
+  var form = document.getElementById("wl-form");
+  var msg = document.getElementById("wl-msg");
+  var btn = document.getElementById("wl-btn");
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    msg.className = "msg"; msg.textContent = "";
+    var email = form.email.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.className="msg err"; msg.textContent="Revisa el email: parece que le falta algo."; form.email.focus(); return; }
+    if (!form.nombre.value.trim() || !form.clinica.value.trim() || !form.tipo.value) { msg.className="msg err"; msg.textContent="Rellena tu nombre, la clínica y la especialidad."; return; }
+    if (form._honey.value) return;
+    btn.disabled = true; btn.textContent = "Enviando…";
+    var data = {
+      email: email, nombre: form.nombre.value.trim(), clinica: form.clinica.value.trim(),
+      tipo: form.tipo.value, profesionales: form.profesionales.value, software: form.software.value.trim(),
+      _subject: "Sinhueco · nueva clínica en la lista: " + form.clinica.value.trim(),
+      _template: "table", _captcha: "false"
+    };
+    fetch(ENDPOINT, {method:"POST", headers:{"Content-Type":"application/json","Accept":"application/json"}, body: JSON.stringify(data)})
+      .then(function(r){ return r.json().then(function(j){ if(!r.ok || j.success === "false" || j.success === false) throw new Error(j.message||"error"); }); })
+      .then(function(){
+        document.getElementById("wl-box").innerHTML =
+          '<div class="done"><p class="eyebrow">Estás dentro</p><h3>Gracias, ' + escapeHtml(data.nombre.split(" ")[0]) + '.</h3>' +
+          '<p style="color:var(--muted)">Hemos apuntado a ' + escapeHtml(data.clinica) + '. Te escribiremos a ' + escapeHtml(email) + ' antes de abrir las plazas.</p></div>';
+      })
+      .catch(function(){
+        btn.disabled = false; btn.textContent = "Apuntarme a la lista";
+        msg.className = "msg err"; msg.textContent = "No se ha podido enviar. Vuelve a intentarlo en un momento.";
+      });
+  });
+  function escapeHtml(s){ return s.replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+})();
+</script>
+</body>
+</html>
